@@ -8,21 +8,29 @@ import { Semaforo } from "./components/semaforo/semaforo";
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
+
+
+
 export class App {
   protected readonly title = signal('LearnAngular');
 
-  cuentaAtras: number = 5;
+  MAX_TIME: number = 5;
+
+  cuentaAtras: number = this.MAX_TIME;
+  time:string = this.cuentaAtras.toString();
 
   @ViewChildren(Semaforo) semaforos!: QueryList<Semaforo>;
 
   timer(){
       let interval = setInterval(() => {
       this.cuentaAtras--;
+      this.time = this.cuentaAtras.toString();
       if(this.cuentaAtras > 3){
         this.cambiarColorSemaforo(this.semaforos, 0);
       } else if(this.cuentaAtras > 0){
         this.cambiarColorSemaforo(this.semaforos, 1);
       } else if(this.cuentaAtras === 0){
+        this.time = "GO!";
         this.cambiarColorSemaforo(this.semaforos, 2);
         clearInterval(interval);
       }
@@ -40,8 +48,9 @@ export class App {
   }
 
   reiniciar(){
-    this.cuentaAtras = 5;
+    this.cuentaAtras = this.MAX_TIME;
     this.timer();
+    this.time = this.cuentaAtras.toString();
     for(let semaforo of this.semaforos){
       semaforo.cambiarColor(0);
     }

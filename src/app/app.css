@@ -30,3 +30,9 @@
     align-items: center;
     height: 100vh;
 }
+
+.cou{
+    font-size: 100px;
+    color: black;
+    font-weight: bold;
+}
