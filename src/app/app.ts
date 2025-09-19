@@ -13,7 +13,7 @@ import { Semaforo } from "./components/semaforo/semaforo";
 
 export class App {
   protected readonly title = signal('LearnAngular');
-
+  private intervalId : any;
   MAX_TIME: number = 5;
 
   cuentaAtras: number = this.MAX_TIME;
@@ -22,37 +22,46 @@ export class App {
   @ViewChildren(Semaforo) semaforos!: QueryList<Semaforo>;
 
   timer(){
-      let interval = setInterval(() => {
+    if(this.intervalId){
+      clearInterval(this.intervalId);
+    }
+
+    this.cuentaAtras = this.MAX_TIME;
+    this.time = this.cuentaAtras.toString();
+    this.cambiarColorSemaforo(0);
+
+    this.intervalId = setInterval(() => {
       this.cuentaAtras--;
       this.time = this.cuentaAtras.toString();
       if(this.cuentaAtras > 3){
-        this.cambiarColorSemaforo(this.semaforos, 0);
+        this.cambiarColorSemaforo(0);
       } else if(this.cuentaAtras > 0){
-        this.cambiarColorSemaforo(this.semaforos, 1);
+        this.cambiarColorSemaforo(1);
       } else if(this.cuentaAtras === 0){
         this.time = "GO!";
-        this.cambiarColorSemaforo(this.semaforos, 2);
-        clearInterval(interval);
+        this.cambiarColorSemaforo(2);
+        clearInterval(this.intervalId);
       }
     }, 1000);
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.timer();
   }
 
-  cambiarColorSemaforo(semaforos: QueryList<Semaforo>, nuevoColor: number) {
-    semaforos.forEach(semaforo => {
+  ngOnDestroy() {
+    if(this.intervalId){
+      clearInterval(this.intervalId);
+    }
+  }
+
+  cambiarColorSemaforo(nuevoColor: number) {
+    this.semaforos.forEach(semaforo => {
       semaforo.cambiarColor(nuevoColor);
     });
   }
 
   reiniciar(){
-    this.cuentaAtras = this.MAX_TIME;
     this.timer();
-    this.time = this.cuentaAtras.toString();
-    for(let semaforo of this.semaforos){
-      semaforo.cambiarColor(0);
-    }
   }
 }
