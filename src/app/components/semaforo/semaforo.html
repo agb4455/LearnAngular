@@ -1,0 +1,12 @@
+<div class="semaforoDoble">
+    <div class="container">
+        <div class="luz" [ngClass]="{'rojo': color === 'rojo', 'apagado': color !== 'rojo'}"></div>
+        <div class="luz" [ngClass]="{'amarillo': color === 'amarillo', 'apagado': color !== 'amarillo'}"></div>
+        <div class="luz" [ngClass]="{'verde': color === 'verde', 'apagado': color !== 'verde'}"></div>
+    </div>
+    <div class="container">
+        <div class="luz" [ngClass]="{'rojo': color === 'rojo', 'apagado': color !== 'rojo'}"></div>
+        <div class="luz" [ngClass]="{'amarillo': color === 'amarillo', 'apagado': color !== 'amarillo'}"></div>
+        <div class="luz" [ngClass]="{'verde': color === 'verde', 'apagado': color !== 'verde'}"></div>
+    </div>
+</div>
