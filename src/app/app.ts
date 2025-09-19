@@ -19,7 +19,7 @@ export class App {
 
   numOfSemaforos = 5;
 
-  private intervalId : any;
+  private intervalId: ReturnType<typeof setInterval> | null = null;
   MAX_TIME: number = 5;
 
   cuentaAtras: number = this.MAX_TIME;
@@ -32,7 +32,7 @@ export class App {
   // Lógica
 
   get semaforosArray() {
-    return Array(this.numOfSemaforos);
+    return Array.from({ length: this.numOfSemaforos });
   }
 
   timer(){
@@ -51,7 +51,7 @@ export class App {
         this.cambiarColorSemaforo(0);
       } else if(this.cuentaAtras > 0){
         this.cambiarColorSemaforo(1);
-      } else if(this.cuentaAtras === 0){
+      } else if(this.cuentaAtras === 0 && this.intervalId) {
         this.time = "GO!";
         this.cambiarColorSemaforo(2);
         clearInterval(this.intervalId);
