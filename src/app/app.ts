@@ -15,10 +15,9 @@ import { NgForOf } from '@angular/common';
 export class App {
   protected readonly title = signal('LearnAngular');
   
+  // Variables
+
   numOfSemaforos = 5;
-  get semaforosArray() {
-  return Array(this.numOfSemaforos);
-}
 
   private intervalId : any;
   MAX_TIME: number = 5;
@@ -26,7 +25,15 @@ export class App {
   cuentaAtras: number = this.MAX_TIME;
   time:string = this.cuentaAtras.toString();
 
+  // ViewChilds
+
   @ViewChildren(Semaforo) semaforos!: QueryList<Semaforo>;
+
+  // Lógica
+
+  get semaforosArray() {
+    return Array(this.numOfSemaforos);
+  }
 
   timer(){
     if(this.intervalId){
@@ -52,6 +59,14 @@ export class App {
     }, 1000);
   }
 
+  cambiarColorSemaforo(nuevoColor: number) {
+    this.semaforos.forEach(semaforo => {
+      semaforo.cambiarColor(nuevoColor);
+    });
+  }
+
+  //Iniciadores
+
   ngAfterViewInit() {
     this.timer();
   }
@@ -60,12 +75,6 @@ export class App {
     if(this.intervalId){
       clearInterval(this.intervalId);
     }
-  }
-
-  cambiarColorSemaforo(nuevoColor: number) {
-    this.semaforos.forEach(semaforo => {
-      semaforo.cambiarColor(nuevoColor);
-    });
   }
 
   reiniciar(){
