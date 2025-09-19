@@ -1,10 +1,11 @@
 import { Component, QueryList, signal, ViewChild, ViewChildren } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Semaforo } from "./components/semaforo/semaforo";
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Semaforo],
+  imports: [RouterOutlet, Semaforo, NgForOf],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -13,6 +14,12 @@ import { Semaforo } from "./components/semaforo/semaforo";
 
 export class App {
   protected readonly title = signal('LearnAngular');
+  
+  numOfSemaforos = 5;
+  get semaforosArray() {
+  return Array(this.numOfSemaforos);
+}
+
   private intervalId : any;
   MAX_TIME: number = 5;
 
