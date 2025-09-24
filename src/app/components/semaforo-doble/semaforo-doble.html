@@ -1,0 +1,18 @@
+<div class ="title">
+  <div class="container col">
+    <div class="container ro">
+      <div *ngFor="let _ of semaforosArray">
+        <app-semaforo></app-semaforo>
+      </div>
+    </div>
+    <p class="cou">{{time}}</p>
+    <!--<p>{{cuentaAtras}}</p>-->
+    <button (click)="reiniciar()" class = "but">Reiniciar</button>
+  </div>
+</div>
+<!--
+  <app-semaforo></app-semaforo>
+  <app-semaforo></app-semaforo>
+  <app-semaforo></app-semaforo>
+  <app-semaforo></app-semaforo>
+-->

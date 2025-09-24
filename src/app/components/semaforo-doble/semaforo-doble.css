@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+    gap:20px;
+}
+
+.ro{
+    flex-direction: row;
+}
+
+.col{
+    flex-direction: column;
+}
+.but{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    cursor: pointer;
+    width: 50%;
+}
+
+.title{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.cou{
+    font-size: 100px;
+    color: black;
+    font-weight: bold;
+}
