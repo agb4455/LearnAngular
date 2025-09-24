@@ -1,10 +1,10 @@
 import { Component, QueryList, signal, ViewChild, ViewChildren } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { SemaforoDoble } from './components/semaforo-doble/semaforo-doble';
+import { Contador } from "./components/contador/contador";
 
 @Component({
   selector: 'app-root',
-  imports: [SemaforoDoble],
+  imports: [SemaforoDoble, Contador],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
