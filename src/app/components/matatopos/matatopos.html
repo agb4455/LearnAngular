@@ -1,7 +1,14 @@
 <div class = "col">
     <div *ngFor="let row of topos; let i = index" class = "row">
         <div *ngFor="let col of row; let j = index">
-            <button #btn>{{ i * 3 + j }}</button>
+            <button 
+                (click) = "randomizar(i*3 + j)"
+                *ngIf="activo == (i * 3 + j); else noActivo"
+                class="boton verde"
+            ></button>
+            <ng-template #noActivo>
+                <button (click) = "randomizar(i*3 + j)" class ="boton"></button>
+            </ng-template>
         </div>
     </div>
 </div>
