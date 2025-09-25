@@ -1,0 +1,7 @@
+<div class = "col">
+    <div *ngFor="let row of topos; let i = index" class = "row">
+        <div *ngFor="let col of row; let j = index">
+            <button #btn>{{ i * 3 + j }}</button>
+        </div>
+    </div>
+</div>

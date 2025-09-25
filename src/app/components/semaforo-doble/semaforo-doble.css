@@ -12,6 +12,7 @@
 .col{
     flex-direction: column;
 }
+
 .but{
     padding: 10px;
     border-radius: 10px;
