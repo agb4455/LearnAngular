@@ -80,15 +80,35 @@
 }
 
 /* Imagen dentro del botón */
-.boton img {
-    width: 80%;             /* ocupa el 80% del botón */
+.topo {
+    width: 80%;
     height: 80%;
-    object-fit: contain;    /* ajusta sin deformarse */
-    pointer-events: none;   /* evita que la imagen bloquee el click */
+    object-fit: contain;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Estado activo (verde) */
 .verde {
     background-color: green;
     color: white;
+}
+
+.topo-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.topo-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.topo-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.topo-leave-active {
+  opacity: 0;
+  transform: translateY(20px);
 }

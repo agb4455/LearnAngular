@@ -18,7 +18,7 @@ export class App {
   protected readonly title = signal('LearnAngular'); 
 }
 
-bootstrapApplication(Main, {
+bootstrapApplication(App, {
   providers: [
     provideRouter(routes)
   ]
