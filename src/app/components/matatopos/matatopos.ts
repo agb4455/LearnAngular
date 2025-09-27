@@ -16,7 +16,7 @@ export class MatatoposComponent {
 
   topos:number[][] = [[1,2,3],[4,5,6],[7,8,9]];
   
-  activo:number = 4;
+  activo:number = -1;
 
   randomizar(btn:number){
     if(btn === this.activo){
