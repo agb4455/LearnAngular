@@ -21,13 +21,13 @@ export class MatatoposComponent {
   randomizar(btn:number){
     if(btn === this.activo){
       this.desapareciendo = true; // hacemos desaparecer al topo
-      setTimeout(() => {
+      setTimeout(() => {  //le doy tiempo a la animacion de salida y luego meto la de entrada
 
-        this.desapareciendo = false; // reseteamos la animacion de salida
+        this.desapareciendo = false; 
 
         this.toposMuertos++;
 
-        this.activo = Math.floor(Math.random() * 9);  //Randomizo el nuevo topo (da igual que sea el mismo)
+        this.activo = Math.floor(Math.random() * 9);  
         console.log(this.activo);
 
         this.apareciendo = false; //activo animacion de netrada
