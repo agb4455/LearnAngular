@@ -1,14 +1,21 @@
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.app-container {
     height: 100vh;
-    width: 100;;
+    display: flex;
+    flex-direction: column;
 }
 
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+}
+
+.nav-bar{
+    height: 5%;
+    width: 100%;
+}
+
+.content{
+    height: 95%;
+    width: 100%;
 }
