@@ -3,12 +3,13 @@ import { Component, QueryList, ViewChildren } from '@angular/core';
 
 
 @Component({
-  selector: 'app-matatopos',
+  selector: 'matatopos-component',
   imports: [NgFor, NgIf],
+  standalone: true,
   templateUrl: './matatopos.html',
   styleUrl: './matatopos.css'
 })
-export class Matatopos {
+export class MatatoposComponent {
   topos:number[][] = [[1,2,3],[4,5,6],[7,8,9]];
   
   activo:number = 4;

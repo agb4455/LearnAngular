@@ -1,0 +1,36 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* ocupa toda la pantalla */
+    width: 100%;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0; /* separa del borde superior */
+}
+
+.routes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* centra vertical y horizontal */
+    flex-grow: 1; /* ocupa el espacio sobrante */
+    gap: 15px; /* separación entre botones */
+}
+
+.routes button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 35%;
+    border-radius: 25px;
+}
