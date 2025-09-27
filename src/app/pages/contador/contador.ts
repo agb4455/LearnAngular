@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ContadorComponent } from "../../components/contador/contador";
 
 @Component({
   selector: 'app-contador-page',
-  imports: [],
+  imports: [ContadorComponent],
   templateUrl: './contador.html',
   styleUrl: './contador.css',
   standalone: true
