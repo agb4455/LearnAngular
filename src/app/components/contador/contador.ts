@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-contador',
+  selector: 'contador-component',
   imports: [],
   templateUrl: './contador.html',
   styleUrl: './contador.css'
 })
-export class Contador {
+export class ContadorComponent {
 
   numero:number = 0;
 

@@ -1,0 +1,36 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+.parrafo {
+    font-size: 20px;
+}
+
+.routes button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 35%;
+    border-radius: 25px;
+}
+.texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,9 @@
+<div class="container">
+    <button *ngFor="let red of pages; let i = index" mat-raised-button routerLink={{red[0]}}><p>{{red[1]}}</p></button>
+</div>
+<!--
+    <button mat-raised-button routerLink="/main">Home</button>
+    <button mat-raised-button routerLink="/matatopos">Matatopos</button>
+    <button mat-raised-button routerLink="/contador">Contador</button>
+    <button mat-raised-button routerLink="/semaforoA">Semaforo automatico</button>
+-->
