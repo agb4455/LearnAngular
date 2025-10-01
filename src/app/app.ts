@@ -5,11 +5,12 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { RouterOutlet } from '@angular/router';
 import { NavBar } from './components/nav-bar/nav-bar';
+import { NavBarMaterial } from './nav-bar-material/nav-bar-material';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavBar],
+  imports: [RouterOutlet,NavBar, NavBarMaterial],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

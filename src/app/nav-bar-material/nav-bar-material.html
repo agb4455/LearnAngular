@@ -1,0 +1,5 @@
+<mat-toolbar>
+    <button mat-button *ngFor="let page of pages" routerLink={{page[0]}}>
+        <p>{{page[1]}}</p>
+    </button>
+</mat-toolbar>
