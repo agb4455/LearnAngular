@@ -1,16 +1,14 @@
 import { Component, QueryList, signal, ViewChild, ViewChildren } from '@angular/core';
-import { Main } from "./pages/main/main";
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { RouterOutlet } from '@angular/router';
-import { NavBar } from './components/nav-bar/nav-bar';
-import { NavBarMaterial } from './nav-bar-material/nav-bar-material';
+import { NavBarMaterial } from './components/nav-bar-material/nav-bar-material';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavBar, NavBarMaterial],
+  imports: [RouterOutlet,NavBarMaterial],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
