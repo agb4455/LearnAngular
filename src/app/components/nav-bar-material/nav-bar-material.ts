@@ -15,6 +15,8 @@ export class NavBarMaterial {
     ["/home","home"],
     ["/matatopos","Matatopos"],
     ["/contador", "Contador"],
-    ["/semaforoA","Semaforo automatico"]];
+    ["/semaforoA","Semaforo automatico"],
+    ["/characters","Characters"]
+  ];
 
 }

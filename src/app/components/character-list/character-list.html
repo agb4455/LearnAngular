@@ -1,1 +1,23 @@
-<p>character-list works!</p>
+<cdk-accordion>
+    <cdk-accordion-item #accordionItem="cdkAccordionItem">
+        <mat-card class="character-card" [style.background-color]="character.raza" (click)="accordionItem.toggle()">
+            <mat-card-title>
+                <div class = "sup">
+                    <img>
+                    <div class = "stars">
+                        <mat-icon *ngFor="let s of [].constructor(character.poder); let j = index" class="star-icon">star</mat-icon>
+                    </div>
+                </div>
+            </mat-card-title>
+            <mat-card-content>
+                <p>
+                    {{character.name}}
+                </p>
+                @if(accordionItem.expanded) {
+                    <hr>
+                    <p>Descripcion</p>
+                }
+            </mat-card-content>
+        </mat-card>
+    </cdk-accordion-item>
+</cdk-accordion>
