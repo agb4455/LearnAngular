@@ -1,0 +1,12 @@
+<div class="scene">
+    <div class="portal-wrapper top" #portalTop>
+      <div class="portalUp" [class.active]="activeSup"></div>
+    </div>
+    <div class="rickFall" #rick
+        [style.--fall-start.px]="fallStart" 
+        [style.--fall-end.px]="fallEnd"> 
+    </div>
+    <div class="portal-wrapper bottom" #portalBottom>
+      <div class="portalDown" [class.active]="activeInf"></div>
+    </div>
+  </div>

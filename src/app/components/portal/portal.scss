@@ -1,0 +1,143 @@
+$portal-size: 300px;
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.portal-wrapper {
+  width: $portal-size;
+  height: $portal-size;
+  perspective: 900px;
+  position: relative;
+
+  &.top {
+    transform: rotateX(-15deg);
+  }
+
+  &.bottom {
+    transform: rotateX(15deg);
+  }
+}
+
+/* Portales */
+.portal {
+  position: absolute;
+  inset: 0;
+  background-image: url('/portal.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 25px #00ff66);
+  transform-origin: center center;
+  transition: all 0.4s ease;
+}
+
+.portalDown {
+  @extend .portal;
+  animation: pulse 4s ease-in-out infinite;
+
+  &.active {
+    animation: pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 45px #aaff00) brightness(1.3);
+  }
+}
+
+.portalUp {
+  @extend .portal;
+  animation: pulseUp 4s ease-in-out infinite;
+
+  &.active {
+    animation: pulseUp 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 45px #aaff00) brightness(1.3);
+  }
+}
+
+/* === Rick cayendo === */
+.rickFall {
+  position: absolute;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translateX(-50%);
+  background-image: url('/caidaSprite.png');
+  background-repeat: no-repeat;
+  background-size: 80px 640px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+
+  &.falling {
+    opacity: 1;
+    animation: rickFallDown 2.4s cubic-bezier(0.3, 0.7, 0.4, 1) forwards, rickSpriteAnim 0.8s steps(8) infinite;
+  }
+}
+
+/* === Caída precisa entre los centros === */
+@keyframes rickFallDown {
+  0% {
+    top: var(--fall-start);
+    opacity: 1;
+  }
+
+  10%{
+    top: var(--fall-start);
+    opacity: 0.7;
+  }
+
+  90% {
+    top: calc(var(--fall-end) - (var(--fall-end) * 0.05));
+    opacity: 0.7;
+  }
+
+  100% {
+    top: calc(var(--fall-end) - (var(--fall-end) * 0.05));
+    opacity: 0;
+  }
+}
+
+/* === Animación del sprite === */
+@keyframes rickSpriteAnim {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 0 -640px;
+  }
+}
+
+/* === Pulso === */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1) rotateX(60deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05) rotateX(60deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes pulseUp {
+
+  0%,
+  100% {
+    transform: scale(1) rotateX(-60deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05) rotateX(-60deg);
+    opacity: 0.9;
+  }
+}

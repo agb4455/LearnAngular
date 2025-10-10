@@ -1,5 +1,5 @@
 export class Character{
-    name:String;
+    name:string;
     raza:raza;
     poder:number;
     imagen:string;
