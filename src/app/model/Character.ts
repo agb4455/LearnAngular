@@ -3,6 +3,7 @@ export class Character{
     raza:raza;
     poder:number;
     imagen:string;
+    
     constructor(nombre:string, raza:raza, poder:number, imagen:string){
         this.name=nombre;
         this.raza=raza;
