@@ -12,10 +12,10 @@ import { NgFor } from '@angular/common';
 export class CharacterListPage {
   
   characters:Character[] = [
-    new Character('Aragorn', raza.enano,3,'' ),
-    new Character('Legolas', raza.elfo,5,'./assets/legolas.jpg' ),
-    new Character('Gimli', raza.horco,4,'./assets/gimli.jpg' ),
-    new Character('Frodo', raza.hada,2,'./assets/frodo.jpg'),
-    new Character('Gandalf', raza.elfo,5,'./assets/gandalf.jpg'),
+    new Character('Aragorn', raza.enano,3,'/characterImages/aragon.jpg' ),
+    new Character('Legolas', raza.elfo,5,'/characterImages/legolas.jpg' ),
+    new Character('Gimli', raza.horco,4,'/characterImages/gimli.jpg' ),
+    new Character('Frodo', raza.hada,2,'/characterImages/frodo.jpg'),
+    new Character('Gandalf', raza.elfo,5,'/characterImages/gandalf.jpg'),
   ];
 }

@@ -1,4 +1,21 @@
 .sup{
+    margin: 4px;
+    display: grid;
+    grid-row: inherit;
+    grid-template-columns: 1fr 1fr;
+    border-top: 5%;
+}
+.foto{
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 5%;
+}
+.character-card{
+    margin: 2%;
+}
+.stars{
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
