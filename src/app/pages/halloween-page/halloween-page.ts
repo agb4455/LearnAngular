@@ -12,7 +12,7 @@ import {MatCardModule} from '@angular/material/card';
   styleUrl: './halloween-page.css'
 })
 export class HalloweenPage {
-  showRegister:boolean = false;
+  showRegister:boolean = true;
 
   halloweenDate:Date = new Date('2025-10-31T00:00:00');
   guests:halloweenRegistration [] = [];
