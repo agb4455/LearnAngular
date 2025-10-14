@@ -19,6 +19,7 @@ export class NavBarMaterial {
     ["/characters","Characters"],
     ["/eyeCandy", "EyeCandy"],
     ["/formTest" ,"formulario Prueba"],
+    ["/halloween", "halloween"]
   ];
 
 }

@@ -1,0 +1,45 @@
+<div>
+    <form [formGroup] = "form" (ngSubmit)="onSubmit()" class="form">
+            <!--Nombre-->
+            
+            <mat-label for="name">Nombre: </mat-label>
+            <mat-form-field>
+                <input matInput  id="name" formControlName="nombre">
+            </mat-form-field>
+
+            <!--Email-->
+            <div class = labelDiv>
+                <mat-label for="email">Email:</mat-label>
+                <mat-form-field>
+                    <input matInput id="email" formControlName="email">
+                </mat-form-field>
+                @if(form.controls['email'].touched){
+                    <small class="error_MSG">
+                        @if(form.controls['email'].hasError('required')){
+                            el email es obligatorio
+                        }
+                        @if(form.controls['nombre'].hasError('email')){
+                            El texto introducido no es un email
+                        }
+                    </small>
+                }
+            </div>
+
+            <!--Tipo de invitado-->
+            <div class="labelDiv">
+                <mat-label for="tipoInvitado" formControlName="tipoInvitado">Tipo de Invitado:</mat-label>
+                <mat-select formControlName="tipoInvitado">
+                    @for (tipo of invtationTypeList; track tipo) {
+                    <mat-option [value]="tipo">{{ tipo }}</mat-option>
+                    } @empty {
+                    <mat-option disabled>No hay tipos disponibles</mat-option>
+                    }
+                </mat-select>
+            </div>
+
+            <!--disfraz-->
+            <!--Fecha llegada-->
+            <!--Acepta Reglas-->
+        
+    </form>
+</div>
