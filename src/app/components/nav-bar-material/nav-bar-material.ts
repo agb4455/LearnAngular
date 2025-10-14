@@ -17,7 +17,8 @@ export class NavBarMaterial {
     ["/contador", "Contador"],
     ["/semaforoA","Semaforo automatico"],
     ["/characters","Characters"],
-    ["/eyeCandy", "EyeCandy"]
+    ["/eyeCandy", "EyeCandy"],
+    ["/formTest" ,"formulario Prueba"],
   ];
 
 }

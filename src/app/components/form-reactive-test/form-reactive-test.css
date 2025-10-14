@@ -1,0 +1,30 @@
+.container{
+    height: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btnsub{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+
+.error_MSG{
+    color: red;
+}
+.labelDiv{
+    align-items: start;
+    display: grid;
+    grid-template-columns: 1fr;
+}
