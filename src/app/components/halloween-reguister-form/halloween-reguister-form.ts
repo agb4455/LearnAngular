@@ -1,59 +1,110 @@
-import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatSelectModule} from '@angular/material/select';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import { invitationType } from '../../model/Halloween';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output, Signal, signal} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {merge} from 'rxjs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import { halloweenRegistration, invitationType } from '../../model/Halloween';
+
 
 
 @Component({
   selector: 'app-halloween-reguister-form',
-  imports: [
+  imports: [MatFormFieldModule,
+    MatCheckboxModule,
+    MatInputModule,
+    FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    ],
+    MatCardModule, 
+    MatButtonModule,
+    MatSelectModule
+  ],
   templateUrl: './halloween-reguister-form.html',
-  styleUrl: './halloween-reguister-form.css'
+  styleUrl: './halloween-reguister-form.css',
 })
 export class HalloweenReguisterForm {
 
-  form:FormGroup;
-  invtationTypeList = Object.values(invitationType);
+  invitationTypeList = Object.values(invitationType);
 
+  @Output() sub  = new EventEmitter<halloweenRegistration>;
 
-  constructor(private fb: FormBuilder) {
-
-    this.form = this.fb.group({
-      nombre: ['', [ Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.email, Validators.required] ],
-      tipoInvitado: ['',[Validators.required, this.enumValidator(this.invtationTypeList)]],
-      disfraz: ['', [Validators.required]],
-      fechaLlegada: ['', ],
-      aceptaReglas: ['',]
-
-    });
-
+  onSubmit(){    
+    if(!this.formData.invalid){
+      this.sub.emit(new halloweenRegistration(
+        this.formData.value.email ?? '',
+        this.formData.value.name ?? '',
+        this.formData.value.type ?? invitationType.Brujo,
+        this.formData.value.costume ?? '',
+        this.formData.value.enterDate ?? new Date,
+        this.formData.value.aceptTerms ?? false
+      ));
+    }
   }
 
-  // Validator personalizado
-  enumValidator(enumObj: object) {
-    const validValues = Object.values(enumObj);
-    return (control: AbstractControl): ValidationErrors | null => {
-      if (!control.value) return null; // required ya lo valida
-      return validValues.includes(control.value) ? null : { invalidEnum: true };
-    };
+  formData = new FormGroup({
+    email : new FormControl<String>('', [Validators.required, Validators.email]),
+    name : new FormControl<String>('',[Validators.required,Validators.minLength(3),Validators.maxLength(20)]),
+    type : new FormControl <invitationType | null> (null,[Validators.required]),
+    costume : new FormControl<String>('',Validators.required),
+    enterDate : new FormControl <Date> (new Date,[Validators.required]),
+    aceptTerms : new FormControl<boolean>(false,[Validators.requiredTrue])
+  });
+
+  emailError = signal('');
+  nameError = signal('');
+  costumeError = signal('');
+
+  constructor() {
+    merge(this.formData.controls['email'].statusChanges, 
+      this.formData.controls['email'].valueChanges)
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.updateErrorEmailMessage());
+
+    merge(this.formData.controls['name'].statusChanges, 
+      this.formData.controls['name'].valueChanges)
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.updateErrorNameMessage());
+
+    merge(this.formData.controls['costume'].statusChanges, 
+      this.formData.controls['costume'].valueChanges)
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.updateErrorCostumeMessage());
   }
 
-  onSubmit(){
+  updateErrorEmailMessage() {
+    if (this.formData.controls['email'].hasError('required')) {
+      this.emailError.set('Debe introducir algun email');
+    } else if (this.formData.controls['email'].hasError('email')) {
+      this.emailError.set('Email no valido');
+    } else {
+      this.emailError.set('');
+    }
+  }
 
+  updateErrorNameMessage() {
+    if (this.formData.controls['name'].hasError('required')) {
+      this.nameError.set('Debe introducir un nombre');
+    } else if (this.formData.controls['name'].hasError('minlength')) {
+      this.emailError.set('Debe de tener mas de 3 letras');
+    }else if (this.formData.controls['name'].hasError('maxlength')) {
+      this.emailError.set('Debe de tener menos de 10 letras');
+    } else {
+      this.emailError.set('');
+    }
+  }
+
+  updateErrorCostumeMessage() {
+    if (this.formData.controls['costume'].hasError('required')) {
+      this.costumeError.set('Debes introducir un disfraz');
+    } else {
+      this.costumeError.set('');
+    }
   }
 
 }
-function provideMatDatepicker(): import("@angular/core").Provider {
-  throw new Error('Function not implemented.');
-}
-

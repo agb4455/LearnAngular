@@ -1,4 +1,11 @@
 <div class="contador">
-    <p>dd:hh:mm:ss</p>
-    {{remainingTime}}
+  <p class="titulo">⏳ Countdown to Halloween 🎃</p>
+
+  <div class="clock">
+    @for (time of rTime; track  time + '-' + $index) {
+      <mat-card class="time-card">
+        <span class="time-text">{{ time }}</span>
+      </mat-card>
+    }
+  </div>
 </div>

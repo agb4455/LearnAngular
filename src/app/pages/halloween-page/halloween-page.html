@@ -1,2 +1,19 @@
-<app-contador-time-hallowen [targetDate]="halloweenDate"></app-contador-time-hallowen>
-<app-halloween-reguister-form></app-halloween-reguister-form>
+<div class = "container">
+    <div class="item">
+        <app-contador-time-hallowen [targetDate]="halloweenDate"></app-contador-time-hallowen>
+    </div>
+    <div style="width: 100%; height: 100%;">
+        @if (showRegister) {
+            <app-halloween-reguister-form (sub)="addGuest($event)"></app-halloween-reguister-form>
+        } @else {
+            <div lass="item">
+                <mat-card >
+                    <p class="registerString">
+                        🎃 ¡Bienvenido/a, {{guests.at(-1)?.name}}! Tu entrada para la fiesta del castillo ha sido registrada con éxito.
+                    </p>
+                    <button matButton (click) = 'this.showRegister = true'>Nuevo Registro</button>
+                </mat-card>
+            </div>
+        } 
+    </div>
+</div>

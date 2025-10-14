@@ -1,45 +1,85 @@
-<div>
-    <form [formGroup] = "form" (ngSubmit)="onSubmit()" class="form">
+<div class="container">
+    <mat-card class = "formCard">
+        <form [formGroup]="formData" (ngSubmit)="onSubmit()" class = "formulario">
             <!--Nombre-->
-            
-            <mat-label for="name">Nombre: </mat-label>
-            <mat-form-field>
-                <input matInput  id="name" formControlName="nombre">
-            </mat-form-field>
+            <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input
+                        matInput
+                        placeholder="Vampiro"
+                        formControlName="name"
+                        (blur)="updateErrorNameMessage()"
+                        required
+                    />
+                    @if (formData.controls['name'].invalid) {
+                        <mat-error>{{nameError()}}</mat-error>
+                    }
+                </mat-form-field>
 
             <!--Email-->
-            <div class = labelDiv>
-                <mat-label for="email">Email:</mat-label>
-                <mat-form-field>
-                    <input matInput id="email" formControlName="email">
-                </mat-form-field>
-                @if(form.controls['email'].touched){
-                    <small class="error_MSG">
-                        @if(form.controls['email'].hasError('required')){
-                            el email es obligatorio
-                        }
-                        @if(form.controls['nombre'].hasError('email')){
-                            El texto introducido no es un email
-                        }
-                    </small>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                matInput
+                placeholder="pat@example.com"
+                formControlName="email"
+                (blur)="updateErrorEmailMessage()"
+                required
+                />
+                @if (formData.controls['email'].invalid) {
+                    <mat-error>{{emailError()}}</mat-error>
                 }
-            </div>
+            </mat-form-field>
 
             <!--Tipo de invitado-->
-            <div class="labelDiv">
-                <mat-label for="tipoInvitado" formControlName="tipoInvitado">Tipo de Invitado:</mat-label>
-                <mat-select formControlName="tipoInvitado">
-                    @for (tipo of invtationTypeList; track tipo) {
-                    <mat-option [value]="tipo">{{ tipo }}</mat-option>
-                    } @empty {
-                    <mat-option disabled>No hay tipos disponibles</mat-option>
+            <mat-form-field appearance="outline">
+                <mat-label>Tipo de invitado</mat-label>
+                <mat-select formControlName="type">
+                    @for( t of invitationTypeList; track t) {
+                    <mat-option [value]="t">{{ t }}</mat-option>
                     }
                 </mat-select>
-            </div>
+                @if (formData.controls['type'].invalid) {
+                    <mat-error>Debes seleccionar un tipo de invitado</mat-error>
+                }
+            </mat-form-field>
 
             <!--disfraz-->
+            <mat-form-field appearance="outline">
+                <mat-label>Disfraz</mat-label>
+                <input
+                    matInput
+                    formControlName="costume"
+                    (blur)="updateErrorCostumeMessage()"
+                    required
+                />
+                @if (formData.controls['costume'].invalid) {
+                    <mat-error>{{costumeError()}}</mat-error>
+                }
+            </mat-form-field>
+            
             <!--Fecha llegada-->
+            <mat-form-field appearance="outline">
+                <mat-label>Choose a date</mat-label>
+                <input
+                    matInput
+                    [matDatepicker]="picker"
+                    formControlName="enterDate"
+                    readonly>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
             <!--Acepta Reglas-->
-        
-    </form>
+            <div>
+                <mat-checkbox formControlName="aceptTerms">
+                    I accept the terms and conditions
+                </mat-checkbox>
+                @if (formData.get('aceptTerms')?.hasError('required')) {
+                    <mat-error>{{costumeError()}}</mat-error>
+                }
+            </div>
+            <button matButton="outlined" type="submit">Enviar</button>
+        </form>
+    </mat-card>
 </div>

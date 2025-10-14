@@ -1,0 +1,51 @@
+.contador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  gap: 1rem;
+}
+
+.titulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ff6f00;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255, 111, 0, 0.3);
+  margin: 0;
+}
+
+.clock {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.time-card {
+  background: #1e1e1e;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 111, 0, 0.4);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.time-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 111, 0, 0.6);
+}
+
+.time-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+}

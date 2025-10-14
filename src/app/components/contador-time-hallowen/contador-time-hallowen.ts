@@ -1,10 +1,11 @@
 import { Component, Input, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { map, takeWhile } from 'rxjs/operators';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-contador-time-hallowen',
-  imports: [],
+  imports: [MatCardModule],
   templateUrl: './contador-time-hallowen.html',
   styleUrl: './contador-time-hallowen.css'
 })
@@ -14,6 +15,8 @@ export class ContadorTimeHallowen {
   remainingTime: string = '';
 
   private subscription?: Subscription;
+
+  rTime:String [] = ['0',":",'0',":",'0',":","0"];
 
   ngOnInit() {
     let endTime: number;
@@ -30,17 +33,17 @@ export class ContadorTimeHallowen {
         takeWhile(ms => ms > 0, true)
       )
       .subscribe(ms => {
-        this.remainingTime = this.formatTime(ms);
+        this.rTime = this.formatTime(ms);
       });
   }
 
-  private formatTime(ms: number): string {
+  private formatTime(ms: number): String [] {
     const totalSeconds = Math.floor(ms / 1000);
     const days = Math.floor(totalSeconds / 86400)
     const hours = Math.floor((totalSeconds % 86400) / 3600);
     const minutes = Math.floor(((totalSeconds % 86400) % 3600) / 60);
     const seconds = totalSeconds % 60;
-    return `${this.pad(days)}:${this.pad(hours)}:${this.pad(minutes)}:${this.pad(seconds)}`;
+    return [days + 'd ',' - ',hours + ' h ',':',minutes + ' min ',':',seconds + ' seg'];
   }
 
   private pad(num: number): string {

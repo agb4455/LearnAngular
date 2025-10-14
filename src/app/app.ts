@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { RouterOutlet } from '@angular/router';
 import { NavBarMaterial } from './components/nav-bar-material/nav-bar-material';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 
 @Component({
@@ -17,8 +18,3 @@ export class App {
   protected readonly title = signal('LearnAngular'); 
 }
 
-bootstrapApplication(App, {
-  providers: [
-    provideRouter(routes)
-  ]
-});
