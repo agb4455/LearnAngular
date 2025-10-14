@@ -1,11 +1,15 @@
 <div class="contador">
-  <p class="titulo">⏳ Countdown to Halloween 🎃</p>
+  @if(current){
+    <p class="titulo">⏳ Countdown to Halloween 🎃</p>
 
-  <div class="clock">
-    @for (time of rTime; track  time + '-' + $index) {
-      <mat-card class="time-card">
-        <span class="time-text">{{ time }}</span>
-      </mat-card>
-    }
-  </div>
+    <div class="clock">
+      @for (time of rTime; track  time + '-' + $index) {
+        <mat-card class="time-card">
+          <span class="time-text">{{ time }}</span>
+        </mat-card>
+      }
+    </div>
+  } @else {
+    <p>🕛 ¡La noche de los bugs ha comenzado!</p>
+  }
 </div>
