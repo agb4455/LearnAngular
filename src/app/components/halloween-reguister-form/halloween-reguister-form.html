@@ -73,7 +73,7 @@
             <!--Acepta Reglas-->
             <div>
                 <mat-checkbox formControlName="aceptTerms">
-                    I accept the terms and conditions
+                    Prometo no morder a nadie
                 </mat-checkbox>
                 @if (formData.get('aceptTerms')?.hasError('required')) {
                     <mat-error>{{costumeError()}}</mat-error>
