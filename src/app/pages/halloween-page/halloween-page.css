@@ -22,3 +22,8 @@ html,body{
     align-items: center;
     justify-content: center;
 }
+
+.content{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}

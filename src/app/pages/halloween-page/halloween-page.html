@@ -1,19 +1,47 @@
-<div class = "container">
-    <div class="item">
-        <app-contador-time-hallowen [targetDate]="halloweenDate"></app-contador-time-hallowen>
+<div class="container">
+  <div class="item">
+    <app-contador-time-hallowen [targetDate]="halloweenDate"></app-contador-time-hallowen>
+  </div>
+
+  <div style="width: 100%; height: 100%;" [ngClass]="{'content': guests.length > 0}">
+    <div>
+      @if (showRegister) {
+        <app-halloween-reguister-form (sub)="addGuest($event)"></app-halloween-reguister-form>
+      } @else {
+        <div class="item">
+          <mat-card>
+            <p class="registerString">
+              🎃 ¡Bienvenido/a, {{ guests.at(-1)?.name }}! Tu entrada para la fiesta del castillo ha sido registrada con éxito.
+            </p>
+            <button mat-button (click)="showRegister = true">Nuevo Registro</button>
+          </mat-card>
+        </div>
+      }
     </div>
-    <div style="width: 100%; height: 100%;">
-        @if (showRegister) {
-            <app-halloween-reguister-form (sub)="addGuest($event)"></app-halloween-reguister-form>
-        } @else {
-            <div lass="item">
-                <mat-card >
-                    <p class="registerString">
-                        🎃 ¡Bienvenido/a, {{guests.at(-1)?.name}}! Tu entrada para la fiesta del castillo ha sido registrada con éxito.
-                    </p>
-                    <button matButton (click) = 'this.showRegister = true'>Nuevo Registro</button>
-                </mat-card>
-            </div>
-        } 
-    </div>
+
+    @if (guests.length > 0) {
+      <div class="item">
+        <mat-card>
+          <table mat-table [dataSource]="guests" class="mat-elevation-z8">
+            <!-- Position Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="mounstruo">
+                <th mat-header-cell *matHeaderCellDef> Mounstruo </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+            </ng-container>
+              <!-- ✅ Fila de encabezado -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+            <!-- ✅ Fila de datos -->
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card>
+      </div>
+    }
+  </div>
 </div>

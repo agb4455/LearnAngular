@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { NgFor } from '@angular/common';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { HalloweenColorChange } from '../../services/halloween-color-change';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NgStyle } from '@angular/common';
 @Component({
   selector: 'app-nav-bar-material',
-  imports: [MatToolbarModule, RouterLink,MatButtonModule,NgFor],
+  imports: [CommonModule,FormsModule, MatSlideToggleModule, MatToolbarModule, RouterLink, MatButtonModule, NgFor, NgStyle],
   templateUrl: './nav-bar-material.html',
   styleUrl: './nav-bar-material.css'
 })
-export class NavBarMaterial {
+export class NavBarMaterial  implements OnInit{
   pages:String [][] = [
     ["/home","home"],
     ["/matatopos","Matatopos"],
@@ -21,5 +25,19 @@ export class NavBarMaterial {
     ["/formTest" ,"formulario Prueba"],
     ["/halloween", "halloween"]
   ];
+
+  isDark: boolean = false;
+
+  constructor(public halloweenColorChange: HalloweenColorChange) {}
+
+  ngOnInit() {
+    this.halloweenColorChange.halloweenMode$.subscribe(value => {
+      this.isDark = value;
+    });
+  }
+
+  toggleTheme() {
+    this.halloweenColorChange.toggleDarkMode();
+  }
 
 }

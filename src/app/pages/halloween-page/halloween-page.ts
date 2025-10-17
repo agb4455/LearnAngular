@@ -4,15 +4,19 @@ import { HalloweenReguisterForm } from "../../components/halloween-reguister-for
 import { halloweenRegistration } from '../../model/Halloween';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+import { CommonModule } from '@angular/common';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-halloween-page',
-  imports: [ContadorTimeHallowen, HalloweenReguisterForm, MatButtonModule, MatCardModule],
+  imports: [MatTableModule,CommonModule, MatListModule, ContadorTimeHallowen, HalloweenReguisterForm, MatButtonModule, MatCardModule],
   templateUrl: './halloween-page.html',
   styleUrl: './halloween-page.css'
 })
 export class HalloweenPage {
   showRegister:boolean = true;
+  displayedColumns: string[] = ['nombre','mounstruo'];
 
   halloweenDate:Date = new Date('2025-10-31T00:00:00');
   guests:halloweenRegistration [] = [];
