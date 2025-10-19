@@ -12,7 +12,7 @@ import {MatTableModule} from '@angular/material/table';
   selector: 'app-halloween-page',
   imports: [MatTableModule,CommonModule, MatListModule, ContadorTimeHallowen, HalloweenReguisterForm, MatButtonModule, MatCardModule],
   templateUrl: './halloween-page.html',
-  styleUrl: './halloween-page.css'
+  styleUrl: './halloween-page.scss'
 })
 export class HalloweenPage {
   showRegister:boolean = true;

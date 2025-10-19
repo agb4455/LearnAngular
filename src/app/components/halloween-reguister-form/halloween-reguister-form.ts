@@ -10,6 +10,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import { halloweenRegistration, invitationType } from '../../model/Halloween';
+import { NgStyle } from '@angular/common'
 
 
 
@@ -21,12 +22,11 @@ import { halloweenRegistration, invitationType } from '../../model/Halloween';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatCardModule, 
+    MatCardModule,
     MatButtonModule,
-    MatSelectModule
-  ],
+    MatSelectModule, NgStyle],
   templateUrl: './halloween-reguister-form.html',
-  styleUrl: './halloween-reguister-form.css',
+  styleUrl: './halloween-reguister-form.scss',
 })
 export class HalloweenReguisterForm {
 

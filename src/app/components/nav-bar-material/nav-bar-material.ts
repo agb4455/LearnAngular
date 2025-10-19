@@ -12,7 +12,7 @@ import { NgStyle } from '@angular/common';
   selector: 'app-nav-bar-material',
   imports: [CommonModule,FormsModule, MatSlideToggleModule, MatToolbarModule, RouterLink, MatButtonModule, NgFor, NgStyle],
   templateUrl: './nav-bar-material.html',
-  styleUrl: './nav-bar-material.css'
+  styleUrls: ['./nav-bar-material.css', './nav-bar-material.scss'],
 })
 export class NavBarMaterial  implements OnInit{
   pages:String [][] = [

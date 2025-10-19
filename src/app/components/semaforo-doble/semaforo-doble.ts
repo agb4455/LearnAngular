@@ -7,7 +7,7 @@ import { NgFor, NgForOf } from '@angular/common';
   imports: [Semaforo,NgFor],
   standalone: true,
   templateUrl: './semaforo-doble.html',
-  styleUrl: './semaforo-doble.css'
+  styleUrl: './semaforo-doble.scss'
 })
 
 export class SemaforoDoble {

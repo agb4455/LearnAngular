@@ -6,6 +6,57 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+:root{
+
+  //colores generales
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --accent-color: #007acc;
+  --secundary-color: #e0e0e0;
+
+  //colores navBar parta el scss
+  --nav-bar-hover-color : #007acc;
+
+  //colores de las nav-card
+  --card-background-color :  #e0e0e0;
+  --card-border-color : #000000;
+  --card-text-color : #000000;
+
+  //formularios
+  --form-text-color : #000;
+  --form-border-color : #000;
+}
+
+@include mat.checkbox-overrides((
+  label-text-color : var(--form-text-color),
+  selected-icon-color : var(--form-text-color), 
+  selected-hover-icon-color : var(--form-text-color),
+  unselected-hover-icon-color : var(--form-text-color),
+));
+
+@include mat.form-field-overrides((
+  outlined-label-text-color : var(--form-text-color),
+  outlined-focus-outline-color : var(--form-border-color),
+  outlined-outline-color : var(--form-border-color) ,
+  outlined-hover-outline-color : var(--form-border-color) ,
+));
+
+@include mat.table-overrides((
+    background-color: var(--card-background-color),
+    row-item-label-text-color : var(--form-text-color),
+    header-headline-color : var(--form-text-color),
+    row-item-outline-color : var(--card-border-color)
+    
+  ));
+
+@include mat.datepicker-overrides((
+  toggle-icon-color : var(--form-text-color),
+));
+
+@include mat.card-overrides((
+  elevated-container-color : var(--card-background-color),
+));
+
 html {
   @include mat.theme((
     color: (

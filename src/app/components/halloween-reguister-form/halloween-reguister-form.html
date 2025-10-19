@@ -10,6 +10,7 @@
                         formControlName="name"
                         (blur)="updateErrorNameMessage()"
                         required
+                        [ngStyle]="{'color':  'var(--form-text-color)'}"
                     />
                     @if (formData.controls['name'].invalid) {
                         <mat-error>{{nameError()}}</mat-error>
@@ -25,6 +26,7 @@
                 formControlName="email"
                 (blur)="updateErrorEmailMessage()"
                 required
+                [ngStyle]="{'color':  'var(--form-text-color)'}"
                 />
                 @if (formData.controls['email'].invalid) {
                     <mat-error>{{emailError()}}</mat-error>
@@ -52,6 +54,7 @@
                     formControlName="costume"
                     (blur)="updateErrorCostumeMessage()"
                     required
+                    [ngStyle]="{'color':  'var(--form-text-color)'}"
                 />
                 @if (formData.controls['costume'].invalid) {
                     <mat-error>{{costumeError()}}</mat-error>
@@ -60,12 +63,13 @@
             
             <!--Fecha llegada-->
             <mat-form-field appearance="outline">
-                <mat-label>Choose a date</mat-label>
+                <mat-label>fecha de entrada</mat-label>
                 <input
                     matInput
                     [matDatepicker]="picker"
                     formControlName="enterDate"
-                    readonly>
+                    readonly
+                    [ngStyle]="{'color':  'var(--form-text-color)'}">
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>

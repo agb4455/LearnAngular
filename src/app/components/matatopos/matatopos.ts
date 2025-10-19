@@ -1,5 +1,6 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { Component} from '@angular/core';
+import { Component, inject} from '@angular/core';
+import { HalloweenColorChange } from '../../services/halloween-color-change';
 
 
 @Component({
@@ -7,9 +8,15 @@ import { Component} from '@angular/core';
   imports: [NgFor, NgIf,CommonModule],
   standalone: true,
   templateUrl: './matatopos.html',
-  styleUrl: './matatopos.css'
+  styleUrl: './matatopos.scss'
 })
 export class MatatoposComponent {
+
+  halloweenService = inject(HalloweenColorChange);
+
+  constructor(halloweenColorChange: HalloweenColorChange){}
+
+
   toposMuertos:number = -1;
   desapareciendo = false;   // controla animación de salida
   apareciendo = false;

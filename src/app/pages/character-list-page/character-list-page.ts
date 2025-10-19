@@ -7,7 +7,7 @@ import { NgFor } from '@angular/common';
   selector: 'app-character-list-page',
   imports: [CharacterList, NgFor],
   templateUrl: './character-list-page.html',
-  styleUrl: './character-list-page.css'
+  styleUrl: './character-list-page.scss'
 })
 export class CharacterListPage {
   
