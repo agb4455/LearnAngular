@@ -42,7 +42,6 @@ export class KanbanBoard {
     name : new FormControl <String>('',[Validators.required]),
     description : new FormControl <String>('',[Validators.required]),
     state: new FormControl <TastState | null>(null,[Validators.required])
-
   })
 
   // Objeto para que CDK tenga referencias estables

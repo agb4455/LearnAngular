@@ -11,11 +11,10 @@ body, html {
 }
 
 .nav-bar{
-    height: 5%;
     width: 100%;
 }
 
 .content{
-    height: 95%;
+    flex-grow: 1;
     width: 100%;
 }
