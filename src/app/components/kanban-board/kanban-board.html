@@ -1,0 +1,75 @@
+@if(isEntering === false){
+    <div class="btnAdd">
+        <button matButton="outlined" (click)="isEntering = true">Insertar nueva tarea</button>
+    </div>
+    <div class="kanban-grid">
+    @for (state of states; track state) {
+        <div class="kanban-column"
+            cdkDropList
+            [id]="state"
+            [cdkDropListData]="tasksByState[state]"
+            [cdkDropListConnectedTo]="states"
+            (cdkDropListDropped)="drop($event, state)">
+        
+        <h3 class="mat-headline-small">
+            <div class ="hed">
+                <p>{{ state | titlecase}}</p>
+                <span class ="sep"></span>
+                <p>{{tasksByState[state].length}}</p>
+            </div>
+        </h3>
+        
+        @for (task of tasksByState[state]; track task.id) {
+            <cdk-accordion-item #accordionItem="cdkAccordionItem">
+                <mat-card appearance="outlined" class="task-card" (click)="accordionItem.toggle()" cdkDrag>
+                <mat-card-title>
+                    <div class ="hed">
+                        {{ task.title }}
+                        <span class ="sep"></span>
+                        <button matIconButton (click)="deletedElementById(task.id)"><mat-icon fontIcon="delete"/></button>
+                    </div>
+                </mat-card-title>
+                @if(accordionItem.expanded){
+                    <mat-card-content>
+                        <p>{{ task.description }}</p>
+                    </mat-card-content>
+                }
+                </mat-card>
+            </cdk-accordion-item>  
+        }
+        </div>
+    }
+    </div>
+} @else {
+    <mat-card class = "formCard">
+        <form [formGroup] = "FormData" (ngSubmit)="onSubmit()"> 
+            <mat-form-field apparence="outline">
+                <mat-label>Asunto de la tarea</mat-label>
+                <input
+                    matInput
+                    formControlName="name"
+                    required
+                    [ngStyle]="{'color':  'var(--form-text-color)'}"
+                />
+            </mat-form-field>
+            <mat-form-field apparence="outline">
+                <mat-label>Descripcion de la tarea</mat-label>
+                <input
+                    matInput
+                    formControlName="description"
+                    required
+                    [ngStyle]="{'color':  'var(--form-text-color)'}"
+                />
+            </mat-form-field>
+            <mat-form-field apparence="outline">
+                <mat-label>Asunto de la tarea</mat-label>
+                <mat-select formControlName="state" required>
+                    @for (state of states; track state) {
+                        <mat-option [value]="state">{{ state | titlecase }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <button matButton="outlined" type="submit">Enviar</button>
+        </form>
+    </mat-card>
+}
