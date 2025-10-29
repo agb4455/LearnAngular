@@ -96,7 +96,20 @@ export class KanbanBoard {
   }
 
   onSubmit(){
-
+    if(!this.FormData.invalid){
+      this.TaskList.push(new Task(
+        this.TaskList.length + 1 as number,
+        this.FormData.value.name as string,
+        this.FormData.value.description as string,
+        this.FormData.value.state as TastState
+      ));
+      this.updateTasksByState();
+      this.saveTasks();
+      this.isEntering = false;
+      this.FormData.reset();
+    }else{
+      console.log("no es viable la insercion" + this.FormData)
+    }
   }
 
   deletedElementById(id:number){
