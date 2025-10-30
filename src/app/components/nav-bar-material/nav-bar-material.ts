@@ -24,7 +24,8 @@ export class NavBarMaterial  implements OnInit{
     ["/eyeCandy", "EyeCandy"],
     ["/formTest" ,"formulario Prueba"],
     ["/halloween", "halloween"],
-    ["/kanban", "kanban"]
+    ["/kanban", "kanban"],
+    ["/grafic", "grafic"]
   ];
 
   isDark: boolean = false;

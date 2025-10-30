@@ -8,6 +8,7 @@ import { EyeCandyPage } from './pages/eye-candy-page/eye-candy-page';
 import { FormReactiveTest } from './components/form-reactive-test/form-reactive-test';
 import { HalloweenPage } from './pages/halloween-page/halloween-page';
 import { Kanban } from './pages/kanban/kanban';
+import { Grafic } from './components/grafic/grafic';
 
 export const routes: Routes = [
     {path: 'main', component: Main},
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path: 'formTest', component: FormReactiveTest},
     {path: 'halloween', component: HalloweenPage},
     {path: 'kanban', component: Kanban},
+    {path: 'grafic', component: Grafic},
     {path: '', redirectTo: '/main', pathMatch: 'full'},
     {path: '**', redirectTo:'/main'},
 ];
