@@ -1,9 +1,4 @@
 
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
 :root{
@@ -27,6 +22,10 @@
   --form-border-color : #000;
 }
 
+@include mat.card-overrides((
+
+));
+
 @include mat.checkbox-overrides((
   label-text-color : var(--form-text-color),
   selected-icon-color : var(--form-text-color), 
@@ -42,12 +41,11 @@
 ));
 
 @include mat.table-overrides((
-    background-color: var(--card-background-color),
-    row-item-label-text-color : var(--form-text-color),
-    header-headline-color : var(--form-text-color),
-    row-item-outline-color : var(--card-border-color)
-    
-  ));
+  background-color: var(--card-background-color),
+  row-item-label-text-color : var(--form-text-color),
+  header-headline-color : var(--form-text-color),
+  row-item-outline-color : var(--card-border-color)
+));
 
 @include mat.datepicker-overrides((
   toggle-icon-color : var(--form-text-color),

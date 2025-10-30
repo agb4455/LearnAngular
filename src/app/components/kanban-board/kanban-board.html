@@ -1,5 +1,6 @@
-<div class="kanban-header">
-    @if(isEntering === false){
+
+@if(isEntering === false){
+    <div class="kanban-header">
         <div class="btnAdd">
             <button matButton="outlined" (click)="isEntering = true">Insertar nueva tarea</button>
         </div>
@@ -41,7 +42,9 @@
             </div>
         }
         </div>
-    } @else {
+    </div>
+} @else {
+    <div class = "formContainer">
         <mat-card class = "formCard">
             <form [formGroup] = "FormData" (ngSubmit)="onSubmit()" class ="formulario"> 
                 <mat-form-field apparence="outline">
@@ -70,8 +73,12 @@
                         }
                     </mat-select>
                 </mat-form-field>
-                <button matButton="outlined" type="submit">Enviar</button>
+                <div class = "botonesForm">
+                    <button matButton="outlined" type="submit">Enviar</button>
+                    <button matButton="outlined" type="button" (click)="isEntering = false">Cancelar</button>
+                </div>
+                
             </form>
         </mat-card>
-    }
-</div>
+    </div>
+}
