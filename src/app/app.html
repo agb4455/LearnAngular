@@ -1,19 +1,26 @@
-<!---
-    <app-semaforo-doble></app-semaforo-doble>
-    <app-contador></app-contador>
-    <app-contador-semaforo></app-contador-semaforo>
-    <div class="container">
-    <app-matatopos></app-matatopos>
-</div>
-<app-main></app-main>
--->
 <div class="app-container">
-    <div class="nav-bar">
-        <app-nav-bar-material></app-nav-bar-material>
-    </div>
-    <div class ="content">
-        <router-outlet></router-outlet>
-    </div>
+    @if((isMobile$ | async)){
+        <div class="nav-bar">
+            <mat-toolbar>
+                <button matIconButton (click)="toggleDrawer()"><mat-icon>open_in_new</mat-icon></button>
+            </mat-toolbar>
+        </div>
+        <mat-drawer-container class="content">
+            <mat-drawer mode="side" [opened]="openDrawer">
+                <p>test</p>
+            </mat-drawer>
+            <mat-drawer-content>
+               <router-outlet></router-outlet>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    } @else {
+        <div class="nav-bar">
+            <app-nav-bar-material></app-nav-bar-material>
+        </div>
+        <div class = "content">
+            <router-outlet></router-outlet>
+        </div>
+    }
 </div>
 
 
