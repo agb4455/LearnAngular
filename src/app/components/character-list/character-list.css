@@ -13,9 +13,11 @@
 }
 .character-card{
     margin: 2%;
+    color: black;
 }
 .stars{
     display: flex;
     align-items: center;
     justify-content: center;
+    color: yellow;
 }

@@ -11,7 +11,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   selector: 'app-root',
   imports: [RouterOutlet,NavBarMaterial],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.scss'
 })
 
 export class App {
