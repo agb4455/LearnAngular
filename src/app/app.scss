@@ -16,28 +16,6 @@ body, html {
     width: 100%;
 }
 
-
-.desktop{
-    display: flex;
-    flex-direction: column;
-    flex:1;
-}
-
-.movile{
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .desktop{
-        display: none;
-    }
-    .movile{
-        display: flex;
-        flex-direction: column;
-    }
-
-}
-
 .content{
     flex-grow: 1;
     width: 100%;
