@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { halloweenRegistration } from '../model/Halloween';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,37 @@ import { halloweenRegistration } from '../model/Halloween';
 export class HalloweenColorChange {
 
   //temas en forma de array de String
-  halloweenTheme:String [] = [
+  halloweenTheme:ColorTheme = new ColorTheme(
+    themesSelector.HALLOWEEN,
+    "#2b1d0e",
+    "#f8d98a",
+    "#ff7518",
+    "#5b2c6f",
+    "#FF7518",
+    "#3A1F0E",
+    "#5B2C6F",
+    "#F8D98A",
+    "#F8D98A",
+    "#5B2C6F"
+  );
+
+  normalTheme:ColorTheme = new ColorTheme(
+    themesSelector.NORMAL,
+    "#ffffff",
+    "#000000",
+    "#007acc",
+    "#e0e0e0",
+    "#007acc",
+    "#e0e0e0",
+    "#000000",
+    "#000000",
+    "#000000",
+    "#000000"
+  );
+
+  christmasTheme:ColorTheme = new ColorTheme(
+    themesSelector.CHRISTMAS,
+    "",
     "",
     "",
     "",
@@ -19,41 +48,114 @@ export class HalloweenColorChange {
     "",
     "",
     ""
-  ];
-
-  normalTheme:String [] = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ];
-
-  christmasTheme:String [] = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ];
-
+  );
 
 
   
   // Variable de color o tema actual
-  private halloweenModeSubject = new BehaviorSubject<boolean>(false);
+  private activeTheme = new BehaviorSubject<themesSelector>(themesSelector.NORMAL);
 
-  halloweenMode$ = this.halloweenModeSubject.asObservable();
+  themeMode$ = this.activeTheme.asObservable();
 
+  setTheme(){
+    switch(this.activeTheme.value){
+      case themesSelector.NORMAL:
+        this.cahngeTheme(this.normalTheme);
+        break;
+      case themesSelector.HALLOWEEN:
+        this.cahngeTheme(this.halloweenTheme);
+        break;
+      case themesSelector.CHRISTMAS:
+        this.cahngeTheme(this.christmasTheme);
+        break;
+    }
+  }
 
+  cahngeTheme(theme: ColorTheme){
+    const root = document.documentElement;
+
+    //colores generales
+    root.style.setProperty('--background-color',theme.backgroundColor);
+    root.style.setProperty('--text-color',theme.textColor);
+    root.style.setProperty('--accent-color',theme.accentColor);
+    root.style.setProperty('--secundary-color', theme.secondaryColor);
+
+    //navBar
+    root.style.setProperty('--nav-bar-hover-color', theme.navBarHoverColor );
+
+    //mat-card
+    root.style.setProperty('--card-background-color', theme.cardBackgroundColor);
+    root.style.setProperty('--card-border-color', theme.cardBorderColor);
+    root.style.setProperty('--card-text-color', theme.cardTextColor);
+
+    //form
+    root.style.setProperty('--form-text-color', theme.formTextColor);
+    root.style.setProperty('--form-border-color', theme.formBorderColor);
+
+  }
+
+  toggleDarkMode() {
+    
+  }
+
+  setColorTheme(ColorTheme: themesSelector) {
+    this.activeTheme.next(ColorTheme);
+  } 
+}
+
+export enum themesSelector{
+  NORMAL = 0,
+  HALLOWEEN = 1,
+  CHRISTMAS = 2,
+}
+
+export class ColorTheme{
+  theme:themesSelector;
+
+  backgroundColor : string;
+  textColor : string;
+  accentColor : string;
+  secondaryColor : string;
+
+  navBarHoverColor : string;
+
+  cardBackgroundColor : string;
+  cardBorderColor : string;
+  cardTextColor : string;
+
+  formTextColor : string;
+  formBorderColor : string;
+
+  constructor(
+    theme:themesSelector,
+    backgroundColor: string,
+    textColor: string,
+    accentColor: string,
+    secondaryColor: string,
+    navBarHoverColor: string,
+    cardBackgroundColor: string,
+    cardBorderColor: string,
+    cardTextColor: string,
+    formTextColor: string,
+    formBorderColor: string,
+  ){
+    this.theme = theme;
+    this.backgroundColor = backgroundColor;
+    this.textColor = textColor;
+    this.accentColor = accentColor;
+    this.secondaryColor = secondaryColor;
+    this.navBarHoverColor = navBarHoverColor;
+    this.cardBackgroundColor = cardBackgroundColor;
+    this.cardBorderColor = cardBorderColor;
+    this.cardTextColor = cardTextColor;
+    this.formTextColor = formTextColor;
+    this.formBorderColor = formBorderColor;
+  }
+}
+
+//deprecado
+
+/**
   setHalloweenTheme(){
     const root = document.documentElement;
 
@@ -103,18 +205,4 @@ export class HalloweenColorChange {
   get secondaryColor(): string {
     return this.halloweenModeSubject.value ? '#5b2c6f' : '#e0e0e0'; // violeta oscuro
   }
-
-  toggleDarkMode() {
-    this.halloweenModeSubject.next(!this.halloweenModeSubject.value);
-    this.setHalloweenTheme();
-  }
-
-  setDarkMode(value: boolean) {
-    this.halloweenModeSubject.next(value);
-  }
-
-  isDarkMode(): boolean {
-    return this.halloweenModeSubject.value;
-  }
-  
-}
+  */
