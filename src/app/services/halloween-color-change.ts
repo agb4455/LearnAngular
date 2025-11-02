@@ -8,9 +8,49 @@ import { halloweenRegistration } from '../model/Halloween';
 
 export class HalloweenColorChange {
 
+  //temas en forma de array de String
+  halloweenTheme:String [] = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ];
+
+  normalTheme:String [] = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ];
+
+  christmasTheme:String [] = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ];
+
+
+
   
   // Variable de color o tema actual
   private halloweenModeSubject = new BehaviorSubject<boolean>(false);
+
   halloweenMode$ = this.halloweenModeSubject.asObservable();
 
 
