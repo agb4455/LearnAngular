@@ -2,12 +2,12 @@
     @if((isMobile$ | async)){
         <div class="nav-bar">
             <mat-toolbar>
-                <button matIconButton (click)="toggleDrawer()"><mat-icon>open_in_new</mat-icon></button>
+                <button matIconButton (click)="toggleDrawer()"><mat-icon>menu</mat-icon></button>
             </mat-toolbar>
         </div>
         <mat-drawer-container class="content">
             <mat-drawer mode="side" [opened]="openDrawer">
-                <p>test</p>
+                <app-nav-bar-material [type] = "1" ></app-nav-bar-material>
             </mat-drawer>
             <mat-drawer-content>
                <router-outlet></router-outlet>
@@ -15,7 +15,7 @@
         </mat-drawer-container>
     } @else {
         <div class="nav-bar">
-            <app-nav-bar-material></app-nav-bar-material>
+            <app-nav-bar-material [type] = "0" ></app-nav-bar-material>
         </div>
         <div class = "content">
             <router-outlet></router-outlet>

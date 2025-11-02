@@ -20,10 +20,30 @@
   //formularios
   --form-text-color : #000;
   --form-border-color : #000;
+
+  --navBar-background-color : #ffffff;
+  --nav-bar-text-color : #000000;
 }
 
 @include mat.card-overrides((
 
+));
+
+@include mat.icon-overrides((
+  color: var(--nav-bar-text-color),
+));
+
+@include mat.dialog-overrides((
+    container-color: var(--background-color),
+));
+
+@include mat.button-toggle-overrides((
+  text-color : var(--nav-bar-text-color)
+));
+
+@include mat.toolbar-overrides((
+    container-background-color : var(--nav-bar-background-color),
+    container-text-color : var(--nav-bar-text-color),
 ));
 
 @include mat.checkbox-overrides((

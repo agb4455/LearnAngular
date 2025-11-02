@@ -1,3 +1,34 @@
 .btnOp:hover{
     color: var(--nav-bar-hover-color);
 }
+
+p{
+    color:var(--nav-bar-text-color);
+}
+
+.tolbar{
+    background-color:var(--nav-bar-background-color);
+}
+
+.v-tolbar{
+    
+}
+
+.sidenav-toolbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+    height: 100%;
+
+}
+
+mat-button-toggle-group {
+  display: flex;        // fuerza que los toggles sigan en fila horizontal
+  gap: 0.5rem;         
+}
+
+.spacer{
+    flex:1 1 auto;
+}

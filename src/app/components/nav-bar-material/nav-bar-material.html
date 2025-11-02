@@ -1,4 +1,7 @@
-<mat-toolbar>
+<mat-toolbar [ngClass]="type === 0 ? 'v-toolbar' : 'sidenav-toolbar'">
+    @if(type === 1){
+        <span class="spacer"></span>
+    } 
     @for(rout of pages; track rout) {
         <button mat-button routerLink={{rout[0]}} class="btnOp">
             <p>{{rout[1]}}</p>
@@ -17,5 +20,8 @@
             <mat-button-toggle [value]="ColorTheme" >{{themesSelector[ColorTheme]}}</mat-button-toggle>
         }
     </mat-button-toggle-group>
+    @if(type === 1){
+        <span class="spacer"></span>
+    } 
     <!--<mat-slide-toggle [checked]="isDark" (change)="toggleTheme()"></mat-slide-toggle>-->
 </mat-toolbar>

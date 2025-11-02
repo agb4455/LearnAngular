@@ -19,7 +19,9 @@ export class HalloweenColorChange {
     "#5B2C6F",
     "#F8D98A",
     "#F8D98A",
-    "#5B2C6F"
+    "#5B2C6F",
+    "#3D1A4D",
+    "#F8D98A"
   );
 
   normalTheme:ColorTheme = new ColorTheme(
@@ -33,11 +35,15 @@ export class HalloweenColorChange {
     "#000000",
     "#000000",
     "#000000",
-    "#000000"
+    "#000000",
+    "#fff",
+    "#000"
   );
 
   christmasTheme:ColorTheme = new ColorTheme(
     themesSelector.CHRISTMAS,
+    "",
+    "",
     "",
     "",
     "",
@@ -82,6 +88,8 @@ export class HalloweenColorChange {
 
     //navBar
     root.style.setProperty('--nav-bar-hover-color', theme.navBarHoverColor );
+    root.style.setProperty('--nav-bar-background-color', theme.navBarBackgroundColor);
+    root.style.setProperty('--nav-bar-text-color', theme.navBarTextColor);
 
     //mat-card
     root.style.setProperty('--card-background-color', theme.cardBackgroundColor);
@@ -91,11 +99,10 @@ export class HalloweenColorChange {
     //form
     root.style.setProperty('--form-text-color', theme.formTextColor);
     root.style.setProperty('--form-border-color', theme.formBorderColor);
-
   }
 
-  toggleDarkMode() {
-    
+  currentTheme(): themesSelector {
+    return this.activeTheme.value;
   }
 
   setColorTheme(ColorTheme: themesSelector) {
@@ -126,6 +133,8 @@ export class ColorTheme{
 
   formTextColor : string;
   formBorderColor : string;
+  navBarBackgroundColor : string;
+  navBarTextColor : string;
 
   constructor(
     theme:themesSelector,
@@ -139,6 +148,8 @@ export class ColorTheme{
     cardTextColor: string,
     formTextColor: string,
     formBorderColor: string,
+    navBarBackgroundColor : string,
+    navBarTextColor : string,
   ){
     this.theme = theme;
     this.backgroundColor = backgroundColor;
@@ -151,6 +162,8 @@ export class ColorTheme{
     this.cardTextColor = cardTextColor;
     this.formTextColor = formTextColor;
     this.formBorderColor = formBorderColor;
+    this.navBarBackgroundColor = navBarBackgroundColor;
+    this.navBarTextColor = navBarTextColor;
   }
 }
 

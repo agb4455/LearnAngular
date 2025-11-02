@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ColorTheme, HalloweenColorChange, themesSelector } from '../../services/halloween-color-change';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { RouterLink } from '@angular/router';
 import { Color } from 'chart.js';
 import { Subscription } from 'rxjs';
+import { Input } from '@angular/core';
 @Component({
   selector: 'app-nav-bar-material',
   imports: [
@@ -21,6 +22,7 @@ import { Subscription } from 'rxjs';
     MatButtonModule, 
     NgFor, 
     NgStyle,
+    NgClass,
     MatButtonToggleModule,
     RouterLink
   ],
@@ -28,6 +30,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./nav-bar-material.css', './nav-bar-material.scss'],
 })
 export class NavBarMaterial  implements OnInit{
+
+  @Input() type: number = 0; // 0 for top nav, 1 for side nav
+
   pages:String [][] = [
     ["/home","home"],
     ["/matatopos","Matatopos"],

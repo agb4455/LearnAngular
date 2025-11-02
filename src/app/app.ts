@@ -8,6 +8,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from "@angular/material/icon";
+import { NavBarMaterialSidebar } from "./components/nav-bar-material-sidebar/nav-bar-material-sidebar";
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
@@ -18,7 +20,9 @@ import { MatIcon } from "@angular/material/icon";
     MatSidenavModule,
     MatToolbar,
     CommonModule,
-    MatIcon
+    MatIcon,
+    NavBarMaterialSidebar,
+    MatButtonModule
 ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
