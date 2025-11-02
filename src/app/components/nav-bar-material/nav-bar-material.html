@@ -1,7 +1,21 @@
-<mat-toolbar [ngStyle]="{'background-color': halloweenColorChange.navBarBackgroundColor}">
-    <button mat-button *ngFor="let page of pages" routerLink={{page[0]}} class="btnOp">
-        <p [ngStyle]="{'color': halloweenColorChange.navBarTextColor}">{{page[1]}}</p>
-    </button>
+<mat-toolbar>
+    @for(rout of pages; track rout) {
+        <button mat-button routerLink={{rout[0]}} class="btnOp">
+            <p>{{rout[1]}}</p>
+        </button>
+    }
+
     <span class="spacer"></span>
-    <mat-slide-toggle [checked]="isDark" (change)="toggleTheme()"></mat-slide-toggle>
+
+    <mat-button-toggle-group 
+        name="fontStyle" 
+        aria-label="Font Style" 
+        (change)="toggleTheme($event.value)" 
+        [(ngModel)]="ColorTheme"
+        >
+        @for (ColorTheme of themes; track ColorTheme) {
+            <mat-button-toggle [value]="ColorTheme" >{{themesSelector[ColorTheme]}}</mat-button-toggle>
+        }
+    </mat-button-toggle-group>
+    <!--<mat-slide-toggle [checked]="isDark" (change)="toggleTheme()"></mat-slide-toggle>-->
 </mat-toolbar>

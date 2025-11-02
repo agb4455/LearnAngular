@@ -1,5 +1,5 @@
 <div class = "col">
-    <p [ngStyle]="{'color': halloweenService.textColor}">Has matados: {{toposMuertos}} topos</p>
+    <p>Has matados: {{toposMuertos}} topos</p>
     <div *ngFor="let row of topos; let i = index" class = "row">
         <div *ngFor="let col of row; let j = index">
             <button

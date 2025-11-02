@@ -1,16 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { NgFor } from '@angular/common';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { HalloweenColorChange } from '../../services/halloween-color-change';
+import { ColorTheme, HalloweenColorChange, themesSelector } from '../../services/halloween-color-change';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgStyle } from '@angular/common';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { RouterLink } from '@angular/router';
+import { Color } from 'chart.js';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-nav-bar-material',
-  imports: [CommonModule,FormsModule, MatSlideToggleModule, MatToolbarModule, RouterLink, MatButtonModule, NgFor, NgStyle],
+  imports: [
+    CommonModule,
+    FormsModule, 
+    MatSlideToggleModule, 
+    MatToolbarModule, 
+    MatButtonModule, 
+    NgFor, 
+    NgStyle,
+    MatButtonToggleModule,
+    RouterLink
+  ],
   templateUrl: './nav-bar-material.html',
   styleUrls: ['./nav-bar-material.css', './nav-bar-material.scss'],
 })
@@ -27,19 +40,31 @@ export class NavBarMaterial  implements OnInit{
     ["/kanban", "kanban"],
     ["/grafic", "grafic"]
   ];
+  
+  themes = Object.values(themesSelector).filter(v => typeof v === 'number') as themesSelector[];
 
-  isDark: boolean = false;
+  readonly themesSelector = themesSelector;
 
-  constructor(public halloweenColorChange: HalloweenColorChange) {}
+  ColorTheme : themesSelector = themesSelector.NORMAL;
+
+  private sub?: Subscription;
+
+  constructor(public ColorChange: HalloweenColorChange) {}
 
   ngOnInit() {
-    this.halloweenColorChange.halloweenMode$.subscribe(value => {
-      this.isDark = value;
+    this.ColorChange.themeMode$.subscribe(value => {
+      this.ColorTheme = value;
     });
   }
 
-  toggleTheme() {
-    this.halloweenColorChange.toggleDarkMode();
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
+  }
+
+  toggleTheme(ColorTheme:themesSelector) {
+    this.ColorTheme = ColorTheme;
+    this.ColorChange.setColorTheme(ColorTheme);
+    console.log("Theme changed to:", ColorTheme);
   }
 
 }

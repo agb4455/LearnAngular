@@ -12,10 +12,6 @@ import { HalloweenColorChange } from '../../services/halloween-color-change';
 })
 export class MatatoposComponent {
 
-  halloweenService = inject(HalloweenColorChange);
-
-  constructor(halloweenColorChange: HalloweenColorChange){}
-
 
   toposMuertos:number = -1;
   desapareciendo = false;   // controla animación de salida

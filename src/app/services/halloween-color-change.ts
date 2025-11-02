@@ -100,6 +100,7 @@ export class HalloweenColorChange {
 
   setColorTheme(ColorTheme: themesSelector) {
     this.activeTheme.next(ColorTheme);
+    this.setTheme();
   } 
 }
 

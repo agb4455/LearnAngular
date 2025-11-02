@@ -38,7 +38,7 @@
                 <mat-label>Tipo de invitado</mat-label>
                 <mat-select formControlName="type">
                     @for( t of invitationTypeList; track t) {
-                    <mat-option [value]="t">{{ t }}</mat-option>
+                        <mat-option [value]="t">{{ t }}</mat-option>
                     }
                 </mat-select>
                 @if (formData.controls['type'].invalid) {
