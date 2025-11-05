@@ -1,11 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { LocalStorage } from './local-storage';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class HalloweenColorChange {
+export class HalloweenColorChange{
+
+  
 
   //temas en forma de array de String
   halloweenTheme:ColorTheme = new ColorTheme(
@@ -59,9 +62,15 @@ export class HalloweenColorChange {
 
   
   // Variable de color o tema actual
-  private activeTheme = new BehaviorSubject<themesSelector>(themesSelector.NORMAL);
+  private activeTheme;
 
-  themeMode$ = this.activeTheme.asObservable();
+  themeMode$;
+
+  constructor(private localstorage:LocalStorage){
+    this.activeTheme = new BehaviorSubject<themesSelector>(this.localstorage.getItem('selectedTheme') as themesSelector || themesSelector.NORMAL);
+    this.themeMode$ = this.activeTheme.asObservable();
+    this.setTheme();
+  }
 
   setTheme(){
     switch(this.activeTheme.value){
@@ -108,13 +117,14 @@ export class HalloweenColorChange {
   setColorTheme(ColorTheme: themesSelector) {
     this.activeTheme.next(ColorTheme);
     this.setTheme();
+    localStorage.setItem('selectedTheme', this.activeTheme.value);
   } 
 }
 
 export enum themesSelector{
-  NORMAL = 0,
-  HALLOWEEN = 1,
-  CHRISTMAS = 2,
+  NORMAL = "remove",
+  HALLOWEEN = "halloweenIcon",
+  CHRISTMAS = "chistmasIcon",
 }
 
 export class ColorTheme{

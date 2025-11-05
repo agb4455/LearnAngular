@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { NgClass, NgFor } from '@angular/common';
@@ -12,24 +12,33 @@ import { RouterLink } from '@angular/router';
 import { Color } from 'chart.js';
 import { Subscription } from 'rxjs';
 import { Input } from '@angular/core';
+import { MatIcon, MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from '@angular/platform-browser';
+import { LocalStorage } from '../../services/local-storage';
+
+
 @Component({
   selector: 'app-nav-bar-material',
   imports: [
     CommonModule,
-    FormsModule, 
-    MatSlideToggleModule, 
-    MatToolbarModule, 
-    MatButtonModule, 
-    NgFor, 
+    FormsModule,
+    MatSlideToggleModule,
+    MatToolbarModule,
+    MatButtonModule,
+    NgFor,
     NgStyle,
     NgClass,
     MatButtonToggleModule,
-    RouterLink
-  ],
+    RouterLink,
+    MatIcon
+],
   templateUrl: './nav-bar-material.html',
   styleUrls: ['./nav-bar-material.css', './nav-bar-material.scss'],
 })
 export class NavBarMaterial  implements OnInit{
+
+  
+  
 
   @Input() type: number = 0; // 0 for top nav, 1 for side nav
 
@@ -46,15 +55,15 @@ export class NavBarMaterial  implements OnInit{
     ["/grafic", "grafic"]
   ];
   
-  themes = Object.values(themesSelector).filter(v => typeof v === 'number') as themesSelector[];
+  themes = Object.values(themesSelector);
 
   readonly themesSelector = themesSelector;
 
-  ColorTheme : themesSelector = themesSelector.NORMAL;
+  ColorTheme : themesSelector = this.themesSelector.NORMAL;
 
   private sub?: Subscription;
 
-  constructor(public ColorChange: HalloweenColorChange) {}
+  constructor(private ColorChange: HalloweenColorChange,private localstorage:LocalStorage) {}
 
   ngOnInit() {
     this.ColorChange.themeMode$.subscribe(value => {

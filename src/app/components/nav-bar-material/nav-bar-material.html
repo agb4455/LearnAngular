@@ -17,7 +17,7 @@
         [(ngModel)]="ColorTheme"
         >
         @for (ColorTheme of themes; track ColorTheme) {
-            <mat-button-toggle [value]="ColorTheme" >{{themesSelector[ColorTheme]}}</mat-button-toggle>
+            <mat-button-toggle [value]="ColorTheme" ><mat-icon svgIcon="{{ColorTheme}}"></mat-icon></mat-button-toggle>
         }
     </mat-button-toggle-group>
     @if(type === 1){
