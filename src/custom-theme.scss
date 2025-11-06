@@ -25,6 +25,14 @@
   --nav-bar-text-color : #000000;
 }
 
+@include mat.menu-overrides((
+    container-color: var(--background-color),
+  ));
+
+@include mat.button-toggle-overrides((
+  text-color : var(--nav-bar-text-color)
+));
+
 @include mat.card-overrides((
 
 ));

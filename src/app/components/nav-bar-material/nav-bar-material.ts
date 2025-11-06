@@ -15,6 +15,7 @@ import { Input } from '@angular/core';
 import { MatIcon, MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from '@angular/platform-browser';
 import { LocalStorage } from '../../services/local-storage';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @Component({
@@ -30,16 +31,13 @@ import { LocalStorage } from '../../services/local-storage';
     NgClass,
     MatButtonToggleModule,
     RouterLink,
-    MatIcon
+    MatIcon,
+    MatMenuModule
 ],
   templateUrl: './nav-bar-material.html',
   styleUrls: ['./nav-bar-material.css', './nav-bar-material.scss'],
 })
 export class NavBarMaterial  implements OnInit{
-
-  
-  
-
   @Input() type: number = 0; // 0 for top nav, 1 for side nav
 
   pages:String [][] = [

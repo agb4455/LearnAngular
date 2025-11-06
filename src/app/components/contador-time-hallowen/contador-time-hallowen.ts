@@ -10,7 +10,8 @@ import {MatCardModule} from '@angular/material/card';
   styleUrl: './contador-time-hallowen.css'
 })
 export class ContadorTimeHallowen {
-  @Input() targetDate?: Date;
+  @Input() targetDate!: Date;
+  @Input() passedDate!: Date;
 
   remainingTime: string = '';
 
@@ -18,6 +19,8 @@ export class ContadorTimeHallowen {
 
   rTime:String [] = ['0',":",'0',":",'0',":","0"];
   current:boolean = true;
+  hoy: any;
+  actualDate:Date = new Date();
 
   ngOnInit() {
     let endTime: number;

@@ -10,16 +10,46 @@
 
     <span class="spacer"></span>
 
-    <mat-button-toggle-group 
-        name="fontStyle" 
-        aria-label="Font Style" 
-        (change)="toggleTheme($event.value)" 
-        [(ngModel)]="ColorTheme"
-        >
-        @for (ColorTheme of themes; track ColorTheme) {
-            <mat-button-toggle [value]="ColorTheme" ><mat-icon svgIcon="{{ColorTheme}}"></mat-icon></mat-button-toggle>
-        }
-    </mat-button-toggle-group>
+    @if(type === 0){
+        <button matIconButton [matMenuTriggerFor]="menu">
+        <mat-icon fontIcon="person"></mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu" class = "menu-style">
+
+            <button mat-menu-item disabled="true">
+                <p>USUARIO</p>
+            </button>
+
+            <mat-button-toggle-group  
+                name="fontStyle" 
+                aria-label="Font Style" 
+                (change)="toggleTheme($event.value)" 
+                [(ngModel)]="ColorTheme"
+                >
+                @for (ColorTheme of themes; track ColorTheme) {
+                    <mat-button-toggle  [value]="ColorTheme" ><mat-icon svgIcon="{{ColorTheme}}"></mat-icon></mat-button-toggle>
+                }
+            </mat-button-toggle-group>
+        </mat-menu>
+    }
+
+    
+
+    @if(type === 1){
+        <span class="spacer"></span>
+        <mat-button-toggle-group 
+            name="fontStyle" 
+            aria-label="Font Style" 
+            (change)="toggleTheme($event.value)" 
+            [(ngModel)]="ColorTheme"
+            >
+            @for (ColorTheme of themes; track ColorTheme) {
+                <mat-button-toggle [value]="ColorTheme" ><mat-icon svgIcon="{{ColorTheme}}"></mat-icon></mat-button-toggle>
+            }
+        </mat-button-toggle-group>
+    }
+    
     @if(type === 1){
         <span class="spacer"></span>
     } 

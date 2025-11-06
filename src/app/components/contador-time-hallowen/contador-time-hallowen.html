@@ -10,6 +10,10 @@
       }
     </div>
   } @else {
-    <p>🕛 ¡La noche de los bugs ha comenzado!</p>
+    @if(actualDate <= passedDate){
+      <p>🕛 ¡La noche de los bugs ha comenzado!</p>
+    } @else {
+      <p>Halloween ya finalizo</p>
+    }
   }
 </div>
