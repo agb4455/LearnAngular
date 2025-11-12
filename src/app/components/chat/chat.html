@@ -1,0 +1,15 @@
+<div class="chat-container">
+
+  @for(msg of messages;track msg){
+    <div class="{{msg.user}}">
+      <b>{{msg.user}}:</b>{{msg.text}}
+    </div>
+  }
+
+  @if(loading){
+    <div><i>IA escribiendo...</i></div>
+  }
+
+  <input [(ngModel)]="inputText" (keyup.enter)="sendMessage()" placeholder="Escribe algo..." />
+  <button (click)="sendMessage()">Enviar</button>
+</div>

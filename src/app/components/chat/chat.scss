@@ -1,0 +1,64 @@
+.chat-container {
+  width: 400px;
+  max-width: 90%;
+  margin: 50px auto;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.chat-container div.me {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 16px 16px 0 16px;
+  max-width: 80%;
+}
+
+.chat-container div.ai {
+  align-self: flex-start;
+  background-color: #e5e5e5;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 16px 16px 16px 0;
+  max-width: 80%;
+}
+
+.chat-container input {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: calc(100% - 24px);
+}
+
+.chat-container input:focus {
+  border-color: #007bff;
+}
+
+.chat-container button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  margin-top: 8px;
+  align-self: flex-end;
+}
+
+.chat-container button:hover {
+  background-color: #0056b3;
+}
+
+.chat-container i {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 8px;
+}

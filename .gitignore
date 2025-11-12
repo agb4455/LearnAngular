@@ -7,7 +7,7 @@
 /bazel-out
 
 # Node
-/node_modules
+*/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -38,9 +38,11 @@ testem.log
 /typings
 *.local
 *.env
+*environment*.ts
 
 # System files
 .DS_Store
 Thumbs.db
 *.swp
 *.swo
+node_modules

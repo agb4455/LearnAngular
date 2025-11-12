@@ -50,7 +50,8 @@ export class NavBarMaterial  implements OnInit{
     ["/formTest" ,"formulario Prueba"],
     ["/halloween", "halloween"],
     ["/kanban", "kanban"],
-    ["/grafic", "grafic"]
+    ["/grafic", "grafic"],
+    ["/chat", "chat"]
   ];
   
   themes = Object.values(themesSelector);

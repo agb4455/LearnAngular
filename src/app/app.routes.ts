@@ -9,6 +9,7 @@ import { FormReactiveTest } from './components/form-reactive-test/form-reactive-
 import { HalloweenPage } from './pages/halloween-page/halloween-page';
 import { Kanban } from './pages/kanban/kanban';
 import { Grafic } from './components/grafic/grafic';
+import { Chat } from './components/chat/chat';
 
 export const routes: Routes = [
     {path: 'main', component: Main},
@@ -21,6 +22,7 @@ export const routes: Routes = [
     {path: 'halloween', component: HalloweenPage},
     {path: 'kanban', component: Kanban},
     {path: 'grafic', component: Grafic},
+    {path: 'chat', component: Chat},
     {path: '', redirectTo: '/main', pathMatch: 'full'},
     {path: '**', redirectTo:'/main'},
 ];
