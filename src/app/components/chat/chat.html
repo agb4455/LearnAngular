@@ -1,10 +1,12 @@
 <div class="chat-container">
 
+  <div class = mesajes-container>
   @for(msg of messages;track msg){
     <div class="{{msg.user}}">
       <b>{{msg.user}}:</b>{{msg.text}}
     </div>
   }
+  </div>
 
   @if(loading){
     <div><i>IA escribiendo...</i></div>

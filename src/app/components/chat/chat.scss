@@ -1,15 +1,18 @@
 .chat-container {
   width: 400px;
   max-width: 90%;
+  height: 75%;
+  max-height: 75%;
   margin: 50px auto;
   border: 1px solid #ccc;
   border-radius: 12px;
   padding: 16px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr;
   gap: 8px;
   background-color: #f9f9f9;
   font-family: Arial, sans-serif;
+  overflow-x: scroll;
 }
 
 .chat-container div.me {
@@ -61,4 +64,18 @@
   font-size: 0.9em;
   color: #555;
   margin-bottom: 8px;
+}
+.mesajes-container {
+  flex-grow: 1;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.User{
+  text-align: end;
+}
+
+.IA{
+  text-align: start;
 }
