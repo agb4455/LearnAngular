@@ -39,22 +39,37 @@ export class PortalComponent {
     return this._activated;
   }
 
-  @ViewChild('portalTop') portalTop!: ElementRef < HTMLDivElement > ;
-  @ViewChild('portalBottom') portalBottom!: ElementRef < HTMLDivElement > ;
-  @ViewChild('rick') rick!:ElementRef< HTMLDivElement >;
+  @ViewChild('portalTop',{static:true}) portalTop!: ElementRef < HTMLDivElement > ;
+  @ViewChild('portalBottom',{static:true}) portalBottom!: ElementRef < HTMLDivElement > ;
+  @ViewChild('rick',{static:true}) rick!:ElementRef< HTMLDivElement >;
 
   constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2) {}
 
   ngAfterViewInit() {
-    this.updateFallPositions();
-    this.loopAnimacion();
+    setTimeout(() => {
+      this.updateFallPositions();
+      if (this._activated) {
+        this.loopAnimacion();
+      }
+    }, 0);
   }
+
+  ngOnDestroy() {
+    this.animating = false;
+  }
+
 
   @HostListener('window:resize') onResize() {
     this.updateFallPositions();
   }
 
   private updateFallPositions() {
+    if (!this.portalTop || !this.portalBottom || !this.portalTop.nativeElement.offsetParent) {
+      console.warn('Elementos portal no listos. Reintentando en próximo ciclo.');
+      setTimeout(() => this.updateFallPositions(), 100); // reintento
+      return;
+    }
+
     const topRect = this.portalTop.nativeElement.getBoundingClientRect();
     const bottomRect = this.portalBottom.nativeElement.getBoundingClientRect();
 

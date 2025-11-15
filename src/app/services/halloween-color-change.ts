@@ -39,7 +39,7 @@ export class HalloweenColorChange{
     "#000000",
     "#000000",
     "#000000",
-    "#fff",
+    "#007bff",
     "#000"
   );
 
@@ -67,6 +67,7 @@ export class HalloweenColorChange{
   private activeTheme;
 
   themeMode$;
+  
   private christmasMode$: Observable<boolean>;
 
   constructor(private localstorage:LocalStorage){
