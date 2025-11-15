@@ -16,6 +16,7 @@ import { MatIcon, MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from '@angular/platform-browser';
 import { LocalStorage } from '../../services/local-storage';
 import {MatMenuModule} from '@angular/material/menu';
+import { UserService } from '../../services/user-service';
 
 
 @Component({
@@ -26,8 +27,6 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSlideToggleModule,
     MatToolbarModule,
     MatButtonModule,
-    NgFor,
-    NgStyle,
     NgClass,
     MatButtonToggleModule,
     RouterLink,
@@ -59,10 +58,18 @@ export class NavBarMaterial  implements OnInit{
   readonly themesSelector = themesSelector;
 
   ColorTheme : themesSelector = this.themesSelector.NORMAL;
+  actName : String = "USUARIO";
 
   private sub?: Subscription;
+  private userSubscription?: Subscription;
 
-  constructor(private ColorChange: HalloweenColorChange,private localstorage:LocalStorage) {}
+  constructor(private ColorChange: HalloweenColorChange,private localstorage:LocalStorage, private users:UserService) {
+    this.userSubscription = this.users.userMode$.subscribe(nameUser => {
+      if(nameUser != null){
+        this.actName = nameUser.name;
+      }
+    });
+  }
 
   ngOnInit() {
     this.ColorChange.themeMode$.subscribe(value => {
@@ -72,6 +79,7 @@ export class NavBarMaterial  implements OnInit{
 
   ngOnDestroy() {
     this.sub?.unsubscribe();
+    this.userSubscription?.unsubscribe();
   }
 
   toggleTheme(ColorTheme:themesSelector) {
@@ -79,5 +87,8 @@ export class NavBarMaterial  implements OnInit{
     this.ColorChange.setColorTheme(ColorTheme);
     console.log("Theme changed to:", ColorTheme);
   }
+
+
+
 
 }

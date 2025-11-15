@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { LocalStorage } from './local-storage';
 
 @Injectable({
@@ -45,18 +45,20 @@ export class HalloweenColorChange{
 
   christmasTheme:ColorTheme = new ColorTheme(
     themesSelector.CHRISTMAS,
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
+    "#ffffff",  
+    "#0d3b1f",  
+    "#c62828",   
+    "#d4af37",  
+    "#b71c1c",   
+
+    "#f7f2e8",  
+    "#c62828",   
+    "#0d3b1f",   
+
+    "#0d3b1f",   
+    "#d4af37",   
+    "#c62828",   
+    "#ffffff"    
   );
 
 
@@ -65,10 +67,16 @@ export class HalloweenColorChange{
   private activeTheme;
 
   themeMode$;
+  private christmasMode$: Observable<boolean>;
 
   constructor(private localstorage:LocalStorage){
     this.activeTheme = new BehaviorSubject<themesSelector>(this.localstorage.getItem('selectedTheme') as themesSelector || themesSelector.NORMAL);
     this.themeMode$ = this.activeTheme.asObservable();
+    
+    this.christmasMode$ = this.activeTheme.pipe(
+      map(theme => theme === themesSelector.CHRISTMAS)
+    );
+
     this.setTheme();
   }
 
@@ -118,7 +126,19 @@ export class HalloweenColorChange{
     this.activeTheme.next(ColorTheme);
     this.setTheme();
     localStorage.setItem('selectedTheme', this.activeTheme.value);
-  } 
+  }
+
+  isHalloween(): boolean{
+    return (this.activeTheme.value === themesSelector.HALLOWEEN);
+  }
+
+  isChristmas(): boolean{
+    return (this.activeTheme.value === themesSelector.CHRISTMAS);
+  }
+
+  getChristmasMode$(): Observable<boolean>{
+    return this.christmasMode$;
+  }
 }
 
 export enum themesSelector{

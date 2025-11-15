@@ -22,13 +22,16 @@ export class MatatoposComponent {
   activo:number = -1;
 
   randomizar(btn:number){
-    if(btn === this.activo){
-      this.desapareciendo = true; // hacemos desaparecer al topo
+    this.desapareciendo = true; // hacemos desaparecer al topo
       setTimeout(() => {  //le doy tiempo a la animacion de salida y luego meto la de entrada
 
         this.desapareciendo = false; 
 
-        this.toposMuertos++;
+        if(btn == this.activo){
+          this.toposMuertos++;
+        }else{
+          this.toposMuertos--;
+        }
 
         this.activo = Math.floor(Math.random() * 9);  
         console.log(this.activo);
@@ -36,7 +39,6 @@ export class MatatoposComponent {
         this.apareciendo = false; //activo animacion de netrada
         setTimeout(() => this.apareciendo = true, 10);
       },300);
-    }
   }
 
   ngOnInit(){

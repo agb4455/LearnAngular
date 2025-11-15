@@ -8,6 +8,7 @@ import {MatListModule} from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import {MatTableModule} from '@angular/material/table';
 import { LocalStorage } from '../../services/local-storage';
+import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'app-halloween-page',
@@ -17,7 +18,7 @@ import { LocalStorage } from '../../services/local-storage';
 })
 export class HalloweenPage {
 
-  constructor(private localstorage:LocalStorage) {
+  constructor(private localstorage:LocalStorage, public userS:UserService) {
    this.guests = this.localstorage.getTItem<halloweenRegistration[]>('halloweenGuests') as halloweenRegistration[] || [];
   }
 
@@ -33,7 +34,7 @@ export class HalloweenPage {
     this.showRegister = false;
     this.showAllGuests();
     this.saveGuests();
-    
+    this.userS.setUser$(guest);
   }
 
   showAllGuests(){

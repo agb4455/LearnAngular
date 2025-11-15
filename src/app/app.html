@@ -1,26 +1,32 @@
 <div class="app-container">
     @if((isMobile$ | async)){
-        <div class="nav-bar">
+        <div class="nav-bar" #navlocal>
             <mat-toolbar>
                 <button matIconButton (click)="toggleDrawer()"><mat-icon>menu</mat-icon></button>
             </mat-toolbar>
         </div>
-        <mat-drawer-container class="content">
-            <mat-drawer mode="side" [opened]="openDrawer">
+        <mat-drawer-container class="content" >
+            <mat-drawer mode="side" [opened]="openDrawer" >
                 <app-nav-bar-material [type] = "1" ></app-nav-bar-material>
             </mat-drawer>
-            <mat-drawer-content>
-               <router-outlet></router-outlet>
+            <mat-drawer-content class="drawCont">
+                <router-outlet></router-outlet>
             </mat-drawer-content>
         </mat-drawer-container>
     } @else {
-        <div class="nav-bar">
+        <div class="nav-bar" #navlocal>
             <app-nav-bar-material [type] = "0" ></app-nav-bar-material>
         </div>
         <div class = "content">
             <router-outlet></router-outlet>
         </div>
     }
+    @if(colorChange.getChristmasMode$() | async){
+        <div class = "christmasBanner" #guirnalda></div>
+        <div class = "presentsBanner"></div>
+    }
 </div>
+
+
 
 

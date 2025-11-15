@@ -18,7 +18,7 @@
         <mat-menu #menu="matMenu" class = "menu-style">
 
             <button mat-menu-item disabled="true">
-                <p>USUARIO</p>
+                <p>{{actName}}</p>
             </button>
 
             <mat-button-toggle-group  
@@ -37,6 +37,13 @@
     
 
     @if(type === 1){
+        <span class="spacer"></span>
+        <div>
+            <button matFab extended disabled>
+                <mat-icon fontIcon="person"></mat-icon>
+                {{actName}}
+            </button>
+        </div>
         <span class="spacer"></span>
         <mat-button-toggle-group 
             name="fontStyle" 
