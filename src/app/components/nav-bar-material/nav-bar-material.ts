@@ -50,7 +50,8 @@ export class NavBarMaterial  implements OnInit{
     ["/halloween", "halloween"],
     ["/kanban", "kanban"],
     ["/grafic", "grafic"],
-    ["/chat", "chat"]
+    ["/chat", "chat"],
+    ["/run", "Carrera"]
   ];
   
   themes = Object.values(themesSelector);

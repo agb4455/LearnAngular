@@ -128,14 +128,20 @@ export class App{
       const navbarRect = navBarElement.getBoundingClientRect();
       guirnaldaElement.style.top = `${navbarRect.bottom}px`;
       guirnaldaElement.style.display = 'block';
-      if(this.openDrawer){
-        const draw = (document.querySelector('.drawCont') as HTMLElement).getBoundingClientRect();
-        guirnaldaElement.style.width = `calc(100%-360px)px`
-        guirnaldaElement.style.left = `360px`;
+      if(document.querySelector('.drawCont') as HTMLElement){
+        if(this.openDrawer){
+          const draw = (document.querySelector('.drawCont') as HTMLElement).getBoundingClientRect();
+          guirnaldaElement.style.width = `calc(100%-360px)px`
+          guirnaldaElement.style.left = `360px`;
+        }else{
+          guirnaldaElement.style.width = `100%`;
+          guirnaldaElement.style.left = `0`;
+        }
       }else{
         guirnaldaElement.style.width = `100%`;
         guirnaldaElement.style.left = `0`;
       }
+
     } else {
       console.warn('No se encontró navbar o guirnalda');
     }

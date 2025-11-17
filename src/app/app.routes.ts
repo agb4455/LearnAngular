@@ -10,6 +10,7 @@ import { HalloweenPage } from './pages/halloween-page/halloween-page';
 import { Kanban } from './pages/kanban/kanban';
 import { Grafic } from './components/grafic/grafic';
 import { Chat } from './components/chat/chat';
+import { Run } from './components/run/run';
 
 export const routes: Routes = [
     {path: 'main', component: Main},
@@ -23,6 +24,7 @@ export const routes: Routes = [
     {path: 'kanban', component: Kanban},
     {path: 'grafic', component: Grafic},
     {path: 'chat', component: Chat},
+    {path: 'run', component: Run},
     {path: '', redirectTo: '/main', pathMatch: 'full'},
     {path: '**', redirectTo:'/main'},
 ];
