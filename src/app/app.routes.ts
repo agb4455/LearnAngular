@@ -11,6 +11,7 @@ import { Kanban } from './pages/kanban/kanban';
 import { Grafic } from './components/grafic/grafic';
 import { Chat } from './components/chat/chat';
 import { Run } from './components/run/run';
+import { CokkieClicker } from './pages/cokkie-clicker/cokkie-clicker';
 
 export const routes: Routes = [
     {path: 'main', component: Main},
@@ -25,6 +26,7 @@ export const routes: Routes = [
     {path: 'grafic', component: Grafic},
     {path: 'chat', component: Chat},
     {path: 'run', component: Run},
+    {path: 'cookieClicker', component: CokkieClicker},
     {path: '', redirectTo: '/main', pathMatch: 'full'},
     {path: '**', redirectTo:'/main'},
 ];

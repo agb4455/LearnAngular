@@ -8,6 +8,4 @@ export class Upgrade{
         this.cokPerSec = cokPerSec;
         this.img = img;
     }
-
-    
 }

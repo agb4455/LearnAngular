@@ -1,1 +1,8 @@
-<p>store works!</p>
+@for( upgrade of upgradeList; track upgrade){
+    <mat-card>
+        <mat-card-header>
+            <p>{{upgrade.name}}</p>
+            <p>{{getUpgradeCount(upgrade)}}</p>
+        </mat-card-header>
+    </mat-card>
+}

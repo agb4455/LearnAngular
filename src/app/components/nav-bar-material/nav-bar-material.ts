@@ -51,7 +51,8 @@ export class NavBarMaterial  implements OnInit{
     ["/kanban", "kanban"],
     ["/grafic", "grafic"],
     ["/chat", "chat"],
-    ["/run", "Carrera"]
+    ["/run", "Carrera"],
+    ["/cookieClicker","cookieClicker"]
   ];
   
   themes = Object.values(themesSelector);
