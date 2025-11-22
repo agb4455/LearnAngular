@@ -1,8 +1,12 @@
-@for( upgrade of upgradeList; track upgrade){
-    <mat-card>
-        <mat-card-header>
-            <p>{{upgrade.name}}</p>
-            <p>{{getUpgradeCount(upgrade)}}</p>
-        </mat-card-header>
-    </mat-card>
-}
+<div class="store-container">
+    @for( upgrade of upgradeList; track upgrade){
+    <div class="store-item" (click)="cokkieService.addUpgrade(upgrade)">
+        <div class="icon"></div>
+        <div class="content">
+            <div class="name">{{upgrade.name}}</div>
+            <div class="price">Cost: {{upgrade.cost}}</div>
+        </div>
+        <div class="count">{{getUpgradeCount(upgrade)}}</div>
+    </div>
+    }
+</div>

@@ -7,58 +7,62 @@ import { Upgrade } from '../../model/UpgradeCokkie';
 })
 
 export class CokkieService {
-  static getUpgradeNumber() {
-    throw new Error('Method not implemented.');
-  }
 
-  public static readonly UpgradeList:Upgrade[] = [
-    new Upgrade("Cursores", 1, ""),
-    new Upgrade("Abuelas", 5, ""),
-    new Upgrade("Fábricas", 10, ""),
-    new Upgrade("Minas", 20, ""),
-    new Upgrade("Robots", 50, ""),
-    new Upgrade("Científicos", 100, ""),
-    new Upgrade("Universidades", 500, ""),
-    new Upgrade("Laboratorios", 1000, ""),
-    new Upgrade("Colonias Espaciales", 5000, ""),
-    new Upgrade("Inteligencia Artificial", 10000, "")
+  public static readonly UpgradeList: Upgrade[] = [
+    new Upgrade("Cursores", 1, "", 15),
+    new Upgrade("Abuelas", 5, "", 100),
+    new Upgrade("Fábricas", 10, "", 500),
+    new Upgrade("Minas", 20, "", 2000),
+    new Upgrade("Robots", 50, "", 7000),
+    new Upgrade("Científicos", 100, "", 50000),
+    new Upgrade("Universidades", 500, "", 1000000),
+    new Upgrade("Laboratorios", 1000, "", 123456789),
+    new Upgrade("Colonias Espaciales", 5000, "", 999999999),
+    new Upgrade("Inteligencia Artificial", 10000, "", 9999999999)
   ];
 
-  private cokies:BehaviorSubject<number>;
-  private cokiesPerSeconth:BehaviorSubject<number>;
-  private upgrades:BehaviorSubject<Map<Upgrade,number>>;
+  private cokies: BehaviorSubject<number>;
+  private cokiesPerSeconth: BehaviorSubject<number>;
+  private upgrades: BehaviorSubject<Map<Upgrade, number>>;
 
   private cookies$;
   private cokiesPerSeconth$;
 
-  
 
-  constructor(){
+
+  constructor() {
     this.cokies = new BehaviorSubject<number>(0);
     this.cokiesPerSeconth = new BehaviorSubject<number>(0);
-    this.upgrades = new BehaviorSubject<Map<Upgrade,number>>(new Map<Upgrade,number>());
+
+    let map = new Map<Upgrade, number>();
+    CokkieService.UpgradeList.forEach(upgrade => {
+      map.set(upgrade, 0);
+    });
+
+    this.upgrades = new BehaviorSubject<Map<Upgrade, number>>(map);
 
     this.cookies$ = this.cokies.asObservable();
     this.cokiesPerSeconth$ = this.cokiesPerSeconth.asObservable();
+
   }
 
-  async push(){
+  async push() {
     this.cokies.next(this.cokies.value + 1);
   }
 
-  getCokies$():Observable<number>{
+  getCokies$(): Observable<number> {
     return this.cookies$;
   }
 
-  getCokkiesPerSecoth():Observable<number>{
+  getCokkiesPerSecoth(): Observable<number> {
     return this.cokiesPerSeconth$;
   }
 
-  async setCookiesPerSeconth(){
+  async setCookiesPerSeconth() {
     this.cokies.next(this.cokies.value + this.cokiesPerSeconth.value);
   }
 
-  getUpgrades():Map<Upgrade,number>{
+  getUpgrades(): Map<Upgrade, number> {
     return new Map(this.upgrades.value);
   }
 
@@ -77,28 +81,29 @@ export class CokkieService {
       const currentValue = current.get(existingKey) ?? 0;
       current.set(existingKey, currentValue + 1);
     } else {
-      current.set(upgrade, 1);
+      current.set(upgrade, 0);
+      console.log("Upgrade added: " + upgrade.name);
     }
 
     this.upgrades.next(new Map(current));
   }
 
-  getUpgradeNumber(u : Upgrade):number{
+  getUpgradeNumber(u: Upgrade): number {
     const current = this.upgrades.value;
 
-    let existingKey: number | undefined;
+    let foundValue: number | undefined;
 
     current.forEach((value, key) => {
       if (key.name === u.name) {
-        existingKey = value;
+        foundValue = value;
       }
     });
 
-    if (existingKey) {
-      return existingKey;
-    } 
+    if (foundValue !== undefined) {
+      return foundValue;
+    }
 
     return -1;
   }
-  
+
 }

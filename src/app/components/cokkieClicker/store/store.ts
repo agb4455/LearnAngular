@@ -1,25 +1,28 @@
 import { Component } from '@angular/core';
-import {MatCardModule} from '@angular/material/card';
-import {CokkieService} from '../cokkie-service';
+import { CokkieService } from '../cokkie-service';
 import { Upgrade } from '../../../model/UpgradeCokkie';
 
 @Component({
   selector: 'app-store',
   imports: [
-    MatCardModule
   ],
   templateUrl: './store.html',
   styleUrl: './store.scss',
 })
 export class Store {
 
-  public readonly upgradeList:Upgrade[] = CokkieService.UpgradeList;
+  readonly cokkieService: CokkieService;
+
+  public readonly upgradeList: Upgrade[] = CokkieService.UpgradeList;
 
 
-  constructor(public cokkieService : CokkieService){}
+  constructor(cokkieService: CokkieService) {
+    this.cokkieService = cokkieService;
+  }
 
-  getUpgradeCount(u:Upgrade):number{
-    n:number = CokkieService.getUpgradeNumber(u);
+  getUpgradeCount(u: Upgrade): number {
+    let n: number = this.cokkieService.getUpgradeNumber(u);
+    return n;
   }
 
 }
