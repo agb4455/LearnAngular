@@ -1,64 +1,74 @@
 <mat-toolbar [ngClass]="type === 0 ? 'v-toolbar' : 'sidenav-toolbar'">
     @if(type === 1){
-        <span class="spacer"></span>
-    } 
+    <span class="spacer"></span>
+    }
     @for(rout of pages; track rout) {
-        <button mat-button routerLink={{rout[0]}} class="btnOp">
-            <p>{{rout[1]}}</p>
-        </button>
+    <button mat-button routerLink={{rout[0]}} class="btnOp">
+        <p>{{rout[1]}}</p>
+    </button>
     }
 
     <span class="spacer"></span>
 
     @if(type === 0){
-        <button matIconButton [matMenuTriggerFor]="menu">
+    <button matIconButton [matMenuTriggerFor]="menu">
         <mat-icon fontIcon="person"></mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu" class="menu-style">
+
+        <button mat-menu-item disabled="true">
+            <p>{{actName}}</p>
         </button>
 
-        <mat-menu #menu="matMenu" class = "menu-style">
-
-            <button mat-menu-item disabled="true">
-                <p>{{actName}}</p>
-            </button>
-
-            <mat-button-toggle-group  
-                name="fontStyle" 
-                aria-label="Font Style" 
-                (change)="toggleTheme($event.value)" 
-                [(ngModel)]="ColorTheme"
-                >
-                @for (ColorTheme of themes; track ColorTheme) {
-                    <mat-button-toggle  [value]="ColorTheme" ><mat-icon svgIcon="{{ColorTheme}}"></mat-icon></mat-button-toggle>
-                }
-            </mat-button-toggle-group>
-        </mat-menu>
-    }
-
-    
-
-    @if(type === 1){
-        <span class="spacer"></span>
-        <div>
-            <button matFab extended disabled>
-                <mat-icon fontIcon="person"></mat-icon>
-                {{actName}}
-            </button>
-        </div>
-        <span class="spacer"></span>
-        <mat-button-toggle-group 
-            name="fontStyle" 
-            aria-label="Font Style" 
-            (change)="toggleTheme($event.value)" 
-            [(ngModel)]="ColorTheme"
-            >
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" (change)="toggleTheme($event.value)"
+            [(ngModel)]="ColorTheme">
             @for (ColorTheme of themes; track ColorTheme) {
-                <mat-button-toggle [value]="ColorTheme" ><mat-icon svgIcon="{{ColorTheme}}"></mat-icon></mat-button-toggle>
+            <mat-button-toggle [value]="ColorTheme"><mat-icon svgIcon="{{ColorTheme}}"></mat-icon></mat-button-toggle>
             }
         </mat-button-toggle-group>
+
+        <mat-button-toggle-group name="language" aria-label="Language" (change)="changeLanguage($event.value)"
+            [(ngModel)]="currentLang" style="margin-top: 8px;">
+            @for (lang of languages; track lang) {
+            <mat-button-toggle [value]="lang">
+                {{ lang === 'es' ? '🇪🇸' : '🇬🇧' }}
+            </mat-button-toggle>
+            }
+        </mat-button-toggle-group>
+    </mat-menu>
     }
-    
+
+
+
     @if(type === 1){
-        <span class="spacer"></span>
-    } 
+    <span class="spacer"></span>
+    <div>
+        <button matFab extended disabled>
+            <mat-icon fontIcon="person"></mat-icon>
+            {{actName}}
+        </button>
+    </div>
+    <span class="spacer"></span>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" (change)="toggleTheme($event.value)"
+        [(ngModel)]="ColorTheme">
+        @for (ColorTheme of themes; track ColorTheme) {
+        <mat-button-toggle [value]="ColorTheme"><mat-icon svgIcon="{{ColorTheme}}"></mat-icon></mat-button-toggle>
+        }
+    </mat-button-toggle-group>
+
+    <mat-button-toggle-group name="language" aria-label="Language" (change)="changeLanguage($event.value)"
+        [(ngModel)]="currentLang" style="margin-top: 8px;">
+        @for (lang of languages; track lang) {
+        <mat-button-toggle [value]="lang">
+            {{ lang === 'es' ? '🇪🇸' : '🇬🇧' }}
+        </mat-button-toggle>
+        }
+    </mat-button-toggle-group>
+    }
+
+    @if(type === 1){
+    <span class="spacer"></span>
+    }
     <!--<mat-slide-toggle [checked]="isDark" (change)="toggleTheme()"></mat-slide-toggle>-->
 </mat-toolbar>

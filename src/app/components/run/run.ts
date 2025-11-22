@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-run',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './run.html',
   styleUrl: './run.css',
 })

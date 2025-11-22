@@ -6,12 +6,12 @@ import { LocalStorage } from './local-storage';
   providedIn: 'root'
 })
 
-export class HalloweenColorChange{
+export class HalloweenColorChange {
 
-  
+
 
   //temas en forma de array de String
-  halloweenTheme:ColorTheme = new ColorTheme(
+  halloweenTheme: ColorTheme = new ColorTheme(
     themesSelector.HALLOWEEN,
     "#2b1d0e",
     "#f8d98a",
@@ -27,7 +27,7 @@ export class HalloweenColorChange{
     "#F8D98A"
   );
 
-  normalTheme:ColorTheme = new ColorTheme(
+  normalTheme: ColorTheme = new ColorTheme(
     themesSelector.NORMAL,
     "#ffffff",
     "#000000",
@@ -43,37 +43,37 @@ export class HalloweenColorChange{
     "#000"
   );
 
-  christmasTheme:ColorTheme = new ColorTheme(
+  christmasTheme: ColorTheme = new ColorTheme(
     themesSelector.CHRISTMAS,
-    "#ffffff",  
-    "#0d3b1f",  
-    "#c62828",   
-    "#d4af37",  
-    "#b71c1c",   
+    "#ffffff",
+    "#0d3b1f",
+    "#c62828",
+    "#d4af37",
+    "#b71c1c",
 
-    "#f7f2e8",  
-    "#c62828",   
-    "#0d3b1f",   
+    "#f7f2e8",
+    "#c62828",
+    "#0d3b1f",
 
-    "#0d3b1f",   
-    "#d4af37",   
-    "#c62828",   
-    "#ffffff"    
+    "#0d3b1f",
+    "#d4af37",
+    "#c62828",
+    "#ffffff"
   );
 
 
-  
+
   // Variable de color o tema actual
   private activeTheme;
 
   themeMode$;
-  
+
   private christmasMode$: Observable<boolean>;
 
-  constructor(private localstorage:LocalStorage){
+  constructor(private localstorage: LocalStorage) {
     this.activeTheme = new BehaviorSubject<themesSelector>(this.localstorage.getItem('selectedTheme') as themesSelector || themesSelector.NORMAL);
     this.themeMode$ = this.activeTheme.asObservable();
-    
+
     this.christmasMode$ = this.activeTheme.pipe(
       map(theme => theme === themesSelector.CHRISTMAS)
     );
@@ -81,8 +81,8 @@ export class HalloweenColorChange{
     this.setTheme();
   }
 
-  setTheme(){
-    switch(this.activeTheme.value){
+  setTheme() {
+    switch (this.activeTheme.value) {
       case themesSelector.NORMAL:
         this.cahngeTheme(this.normalTheme);
         break;
@@ -95,17 +95,17 @@ export class HalloweenColorChange{
     }
   }
 
-  cahngeTheme(theme: ColorTheme){
+  cahngeTheme(theme: ColorTheme) {
     const root = document.documentElement;
 
     //colores generales
-    root.style.setProperty('--background-color',theme.backgroundColor);
-    root.style.setProperty('--text-color',theme.textColor);
-    root.style.setProperty('--accent-color',theme.accentColor);
+    root.style.setProperty('--background-color', theme.backgroundColor);
+    root.style.setProperty('--text-color', theme.textColor);
+    root.style.setProperty('--accent-color', theme.accentColor);
     root.style.setProperty('--secundary-color', theme.secondaryColor);
 
     //navBar
-    root.style.setProperty('--nav-bar-hover-color', theme.navBarHoverColor );
+    root.style.setProperty('--nav-bar-hover-color', theme.navBarHoverColor);
     root.style.setProperty('--nav-bar-background-color', theme.navBarBackgroundColor);
     root.style.setProperty('--nav-bar-text-color', theme.navBarTextColor);
 
@@ -129,46 +129,70 @@ export class HalloweenColorChange{
     localStorage.setItem('selectedTheme', this.activeTheme.value);
   }
 
-  isHalloween(): boolean{
+  isHalloween(): boolean {
     return (this.activeTheme.value === themesSelector.HALLOWEEN);
   }
 
-  isChristmas(): boolean{
+  isChristmas(): boolean {
     return (this.activeTheme.value === themesSelector.CHRISTMAS);
   }
 
-  getChristmasMode$(): Observable<boolean>{
+  getChristmasMode$(): Observable<boolean> {
     return this.christmasMode$;
+  }
+
+  // Get current theme's accent color (for Code Clicker)
+  getAccentColor(): string {
+    switch (this.activeTheme.value) {
+      case themesSelector.HALLOWEEN:
+        return this.halloweenTheme.accentColor; // #ff7518
+      case themesSelector.CHRISTMAS:
+        return this.christmasTheme.accentColor; // #c62828
+      default:
+        return this.normalTheme.accentColor; // #007acc
+    }
+  }
+
+  // Get current theme's secondary color
+  getSecondaryColor(): string {
+    switch (this.activeTheme.value) {
+      case themesSelector.HALLOWEEN:
+        return this.halloweenTheme.secondaryColor; // #5b2c6f
+      case themesSelector.CHRISTMAS:
+        return this.christmasTheme.secondaryColor; // #d4af37
+      default:
+        return this.normalTheme.secondaryColor; // #e0e0e0
+    }
   }
 }
 
-export enum themesSelector{
+export enum themesSelector {
   NORMAL = "remove",
   HALLOWEEN = "halloweenIcon",
   CHRISTMAS = "chistmasIcon",
 }
 
-export class ColorTheme{
-  theme:themesSelector;
+export class ColorTheme {
+  theme: themesSelector;
 
-  backgroundColor : string;
-  textColor : string;
-  accentColor : string;
-  secondaryColor : string;
+  backgroundColor: string;
+  textColor: string;
+  accentColor: string;
+  secondaryColor: string;
 
-  navBarHoverColor : string;
+  navBarHoverColor: string;
 
-  cardBackgroundColor : string;
-  cardBorderColor : string;
-  cardTextColor : string;
+  cardBackgroundColor: string;
+  cardBorderColor: string;
+  cardTextColor: string;
 
-  formTextColor : string;
-  formBorderColor : string;
-  navBarBackgroundColor : string;
-  navBarTextColor : string;
+  formTextColor: string;
+  formBorderColor: string;
+  navBarBackgroundColor: string;
+  navBarTextColor: string;
 
   constructor(
-    theme:themesSelector,
+    theme: themesSelector,
     backgroundColor: string,
     textColor: string,
     accentColor: string,
@@ -179,9 +203,9 @@ export class ColorTheme{
     cardTextColor: string,
     formTextColor: string,
     formBorderColor: string,
-    navBarBackgroundColor : string,
-    navBarTextColor : string,
-  ){
+    navBarBackgroundColor: string,
+    navBarTextColor: string,
+  ) {
     this.theme = theme;
     this.backgroundColor = backgroundColor;
     this.textColor = textColor;

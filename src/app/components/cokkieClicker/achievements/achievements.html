@@ -1,0 +1,14 @@
+<div class="achievements-container">
+    <div class="header">
+        <h2>{{ 'CLICKER.ACHIEVEMENTS' | translate }}</h2>
+    </div>
+
+    <div class="achievements-grid">
+        @for(achievement of achievements$ | async; track achievement.id) {
+        <div class="achievement-square" [class.unlocked]="achievement.unlocked" [class.locked]="!achievement.unlocked"
+            [matTooltip]="achievement.name + ': ' + achievement.description" matTooltipPosition="right">
+            {{achievement.icon}}
+        </div>
+        }
+    </div>
+</div>

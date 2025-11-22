@@ -1,13 +1,15 @@
 export class Upgrade {
-    name: String;
+    name: string;
     cokPerSec: number;
-    img: String;
+    img: string;
     cost: number;
+    clickBonus: number;
 
-    constructor(name: string, cokPerSec: number, img: String, cost: number = 10) {
+    constructor(name: string, cokPerSec: number, img: string, cost: number, clickBonus: number = 0) {
         this.name = name;
         this.cokPerSec = cokPerSec;
         this.img = img;
         this.cost = cost;
+        this.clickBonus = clickBonus;
     }
 }

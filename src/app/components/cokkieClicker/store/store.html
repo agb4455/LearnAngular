@@ -1,12 +1,42 @@
+<!-- Store Component -->
 <div class="store-container">
-    @for( upgrade of upgradeList; track upgrade){
-    <div class="store-item" (click)="cokkieService.addUpgrade(upgrade)">
-        <div class="icon"></div>
-        <div class="content">
-            <div class="name">{{upgrade.name}}</div>
-            <div class="price">Cost: {{upgrade.cost}}</div>
-        </div>
-        <div class="count">{{getUpgradeCount(upgrade)}}</div>
+    <div class="store-tabs">
+        <mat-tab-group [(selectedIndex)]="activeTabIndex">
+            <mat-tab [label]="'CLICKER.PRODUCTION_TAB' | translate">
+                <div class="upgrades-list">
+                    @for (upgrade of upgradeList; track upgrade.name) {
+                    @if (upgrade.clickBonus === 0) {
+                    <div class="store-item" (click)="purchaseUpgrade(upgrade)" [class.affordable]="canAfford(upgrade)"
+                        [class.unaffordable]="!canAfford(upgrade)">
+                        <div class="content">
+                            <div class="name">{{ upgrade.name }}</div>
+                            <div class="price">💎 {{ upgrade.cost | number:'1.0-0' }}</div>
+                            <div class="bonus">+{{ upgrade.cokPerSec }}/s</div>
+                        </div>
+                        <div class="count">{{ getUpgradeCount(upgrade) }}</div>
+                    </div>
+                    }
+                    }
+                </div>
+            </mat-tab>
+
+            <mat-tab [label]="'CLICKER.CLICK_TAB' | translate">
+                <div class="upgrades-list">
+                    @for (upgrade of upgradeList; track upgrade.name) {
+                    @if (upgrade.clickBonus > 0) {
+                    <div class="store-item" (click)="purchaseUpgrade(upgrade)" [class.affordable]="canAfford(upgrade)"
+                        [class.unaffordable]="!canAfford(upgrade)">
+                        <div class="content">
+                            <div class="name">{{ upgrade.name }}</div>
+                            <div class="price">💎 {{ upgrade.cost | number:'1.0-0' }}</div>
+                            <div class="bonus">+{{ upgrade.clickBonus }}/click</div>
+                        </div>
+                        <div class="count">{{ getUpgradeCount(upgrade) }}</div>
+                    </div>
+                    }
+                    }
+                </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
-    }
 </div>

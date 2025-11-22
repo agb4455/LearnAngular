@@ -1,0 +1,98 @@
+{
+    "NAV": {
+        "HOME": "Home",
+        "MATATOPOS": "Whack-a-Mole",
+        "CONTADOR": "Counter",
+        "SEMAFORO": "Automatic Traffic Light",
+        "CHARACTERS": "Characters",
+        "EYE_CANDY": "EyeCandy",
+        "FORM_TEST": "Test Form",
+        "HALLOWEEN": "Halloween",
+        "KANBAN": "Kanban",
+        "GRAFIC": "Chart",
+        "CHAT": "Chat",
+        "RUN": "Race",
+        "COOKIE_CLICKER": "Cookie Clicker",
+        "USER": "User"
+    },
+    "CLICKER": {
+        "CODES": "codes",
+        "PER_SECOND": "per second",
+        "ACHIEVEMENTS": "Achievements",
+        "STORE": "Store",
+        "PRODUCTION_TAB": "Production",
+        "CLICK_TAB": "Per Click"
+    },
+    "UPGRADES": {
+        "VARIABLES": "Variables",
+        "FUNCTIONS": "Functions",
+        "CLASSES": "Classes",
+        "FRAMEWORKS": "Frameworks",
+        "APIS": "APIs",
+        "COMPILERS": "Compilers"
+    },
+    "LANG": {
+        "SPANISH": "Español",
+        "ENGLISH": "English",
+        "SELECT": "Language"
+    },
+    "MAIN": {
+        "TITLE": "Welcome to the Angular introduction development",
+        "SUBTITLE": "Select an option from the start bar to begin"
+    },
+    "MATATOPOS": {
+        "KILLED": "You killed: {{count}} moles"
+    },
+    "CONTADOR": {
+        "TITLE": "Welcome to the Angular introduction application",
+        "RESET": "Reset"
+    },
+    "SEMAFORO": {
+        "RESTART": "Restart"
+    },
+    "CHARACTERS": {
+        "DESCRIPTION": "Description"
+    },
+    "HALLOWEEN": {
+        "WELCOME": "🎃 Welcome, {{name}}! Your ticket for the castle party has been successfully registered.",
+        "NEW_REGISTER": "New Register",
+        "TABLE": {
+            "NAME": "Name",
+            "MONSTER": "Monster"
+        }
+    },
+    "FORM": {
+        "NAME": "Name:",
+        "EMAIL": "Email:",
+        "ERRORS": {
+            "REQUIRED_NAME": "Name is required",
+            "MIN_LENGTH": "Minimum 3 letters",
+            "MAX_LENGTH": "Maximum 10 letters",
+            "REQUIRED_EMAIL": "Email is required",
+            "INVALID_EMAIL": "The text entered is not an email"
+        },
+        "SEND": "Send",
+        "RESET": "Reset"
+    },
+    "CHAT": {
+        "WRITING": "AI writing...",
+        "PLACEHOLDER": "Write something...",
+        "SEND": "Send"
+    },
+    "RUN": {
+        "WORKS": "Run works!"
+    },
+    "KANBAN": {
+        "ADD_TASK": "Insert new task",
+        "TODO": "To Do",
+        "IN_PROGRESS": "In Progress",
+        "DONE": "Done",
+        "DIALOG": {
+            "TITLE": "Task Subject",
+            "DESCRIPTION": "Task Description",
+            "STATE": "Task State",
+            "SEND": "Send",
+            "CANCEL": "Cancel"
+        }
+    }
+}

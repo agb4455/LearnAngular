@@ -1,0 +1,19 @@
+<div class="clicker-container">
+    <canvas #matrixCanvas class="matrix-bg"></canvas>
+
+    <div class="stats-section">
+        <div class="code-count">
+            <div class="count-label">{{ 'CLICKER.CODES' | translate }}</div>
+            <div class="count-value">{{codes$ | async | number:'1.0-0'}}</div>
+        </div>
+        <div class="codes-per-second">
+            {{ 'CLICKER.PER_SECOND' | translate }}: {{codesPerSecond$ | async | number:'1.0-1'}}
+        </div>
+    </div>
+
+    <div class="clicking-area">
+        <div class="code-icon" (click)="onCodeClick($event)" [class.clicking]="isClicking">
+            &lt;/&gt;
+        </div>
+    </div>
+</div>

@@ -1,43 +1,40 @@
 <div class="kanban-header">
     <div class="btnAdd">
-        <button matButton="outlined" (click)="openDialog()">Insertar nueva tarea</button>
+        <button matButton="outlined" (click)="openDialog()">{{ 'KANBAN.ADD_TASK' | translate }}</button>
     </div>
     <div class="kanban-grid">
-    @for (state of states; track state) {
-        <div class="kanban-column"
-            cdkDropList
-            [id]="state"
-            [cdkDropListData]="tasksByState[state]"
-            [cdkDropListConnectedTo]="states"
-            (cdkDropListDropped)="drop($event, state)">
-        
-        <h3 class="mat-headline-small">
-            <div class ="hed">
-                <p>{{ state | titlecase}}</p>
-                <span class ="sep"></span>
-                <p>{{tasksByState[state].length}}</p>
-            </div>
-        </h3>
-        
-        @for (task of tasksByState[state]; track task.id) {
+        @for (state of states; track state) {
+        <div class="kanban-column" cdkDropList [id]="state" [cdkDropListData]="tasksByState[state]"
+            [cdkDropListConnectedTo]="states" (cdkDropListDropped)="drop($event, state)">
+
+            <h3 class="mat-headline-small">
+                <div class="hed">
+                    <p>{{ 'KANBAN.' + state | translate | titlecase}}</p>
+                    <span class="sep"></span>
+                    <p>{{tasksByState[state].length}}</p>
+                </div>
+            </h3>
+
+            @for (task of tasksByState[state]; track task.id) {
             <cdk-accordion-item #accordionItem="cdkAccordionItem">
                 <mat-card appearance="outlined" class="task-card" (click)="accordionItem.toggle()" cdkDrag>
-                <mat-card-title>
-                    <div class ="hed">
-                        {{ task.title }}
-                        <span class ="sep"></span>
-                        <button matIconButton (click)="deletedElementById(task.id)"><mat-icon fontIcon="delete"/></button>
-                    </div>
-                </mat-card-title>
-                @if(accordionItem.expanded){
+                    <mat-card-title>
+                        <div class="hed">
+                            {{ task.title }}
+                            <span class="sep"></span>
+                            <button matIconButton (click)="deletedElementById(task.id)"><mat-icon
+                                    fontIcon="delete" /></button>
+                        </div>
+                    </mat-card-title>
+                    @if(accordionItem.expanded){
                     <mat-card-content>
                         <p>{{ task.description }}</p>
                     </mat-card-content>
-                }
+                    }
                 </mat-card>
-            </cdk-accordion-item>  
-        }
+            </cdk-accordion-item>
+            }
         </div>
-    }
+        }
     </div>
 </div>

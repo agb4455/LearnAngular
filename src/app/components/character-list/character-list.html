@@ -2,10 +2,11 @@
     <cdk-accordion-item #accordionItem="cdkAccordionItem">
         <mat-card class="character-card" [style.background-color]="character.raza" (click)="accordionItem.toggle()">
             <mat-card-title>
-                <div class = "sup">
-                    <img src={{character.imagen}} class ="foto">
-                    <div class = "stars">
-                        <mat-icon *ngFor="let s of [].constructor(character.poder); let j = index" class="star-icon">star</mat-icon>
+                <div class="sup">
+                    <img src={{character.imagen}} class="foto">
+                    <div class="stars">
+                        <mat-icon *ngFor="let s of [].constructor(character.poder); let j = index"
+                            class="star-icon">star</mat-icon>
                     </div>
                 </div>
             </mat-card-title>
@@ -14,8 +15,8 @@
                     {{character.name}}
                 </p>
                 @if(accordionItem.expanded) {
-                    <hr>
-                    <p>Descripcion</p>
+                <hr>
+                <p>{{ 'CHARACTERS.DESCRIPTION' | translate }}</p>
                 }
             </mat-card-content>
         </mat-card>

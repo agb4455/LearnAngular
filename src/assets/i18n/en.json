@@ -1,0 +1,39 @@
+{
+    "NAV": {
+        "HOME": "Home",
+        "MATATOPOS": "Whack-a-Mole",
+        "CONTADOR": "Counter",
+        "SEMAFORO": "Automatic Traffic Light",
+        "CHARACTERS": "Characters",
+        "EYE_CANDY": "EyeCandy",
+        "FORM_TEST": "Test Form",
+        "HALLOWEEN": "Halloween",
+        "KANBAN": "Kanban",
+        "GRAFIC": "Chart",
+        "CHAT": "Chat",
+        "RUN": "Race",
+        "COOKIE_CLICKER": "Cookie Clicker",
+        "USER": "User"
+    },
+    "CLICKER": {
+        "CODES": "codes",
+        "PER_SECOND": "per second",
+        "ACHIEVEMENTS": "Achievements",
+        "STORE": "Store",
+        "PRODUCTION_TAB": "Production",
+        "CLICK_TAB": "Per Click"
+    },
+    "UPGRADES": {
+        "VARIABLES": "Variables",
+        "FUNCTIONS": "Functions",
+        "CLASSES": "Classes",
+        "FRAMEWORKS": "Frameworks",
+        "APIS": "APIs",
+        "COMPILERS": "Compilers"
+    },
+    "LANG": {
+        "SPANISH": "Español",
+        "ENGLISH": "English",
+        "SELECT": "Language"
+    }
+}

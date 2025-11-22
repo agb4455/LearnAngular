@@ -1,4 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Click particle animation */
+.click-particle {
+    position: fixed;
+    pointer-events: none;
+    color: var(--accent-color, #64ffda);
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 10px var(--accent-color, rgba(100, 255, 218, 0.8));
+    z-index: 9999;
+    animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}

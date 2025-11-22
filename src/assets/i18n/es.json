@@ -1,0 +1,39 @@
+{
+    "NAV": {
+        "HOME": "Inicio",
+        "MATATOPOS": "Matatopos",
+        "CONTADOR": "Contador",
+        "SEMAFORO": "Semáforo automático",
+        "CHARACTERS": "Personajes",
+        "EYE_CANDY": "EyeCandy",
+        "FORM_TEST": "Formulario Prueba",
+        "HALLOWEEN": "Halloween",
+        "KANBAN": "Kanban",
+        "GRAFIC": "Gráfico",
+        "CHAT": "Chat",
+        "RUN": "Carrera",
+        "COOKIE_CLICKER": "Cookie Clicker",
+        "USER": "Usuario"
+    },
+    "CLICKER": {
+        "CODES": "códigos",
+        "PER_SECOND": "por segundo",
+        "ACHIEVEMENTS": "Logros",
+        "STORE": "Tienda",
+        "PRODUCTION_TAB": "Producción",
+        "CLICK_TAB": "Por Click"
+    },
+    "UPGRADES": {
+        "VARIABLES": "Variables",
+        "FUNCTIONS": "Funciones",
+        "CLASSES": "Clases",
+        "FRAMEWORKS": "Frameworks",
+        "APIS": "APIs",
+        "COMPILERS": "Compiladores"
+    },
+    "LANG": {
+        "SPANISH": "Español",
+        "ENGLISH": "English",
+        "SELECT": "Idioma"
+    }
+}

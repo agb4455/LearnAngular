@@ -1,5 +1,62 @@
+:host {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.cokie-clicker {
+    display: grid;
+    grid-template-columns: 280px 1fr 350px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr 350px;
+        grid-template-rows: auto 1fr;
+
+        app-achievements {
+            grid-column: 1 / -1;
+            max-height: 200px;
+            border-bottom: 4px solid #222;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 50% auto;
+
+        app-achievements {
+            max-height: 150px;
+        }
+    }
+}
+
+app-achievements {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    border-right: 4px solid #222;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+app-cokie-clicker {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+}
+
 app-store {
     display: block;
     height: 100%;
     overflow: hidden;
+    border-left: 4px solid #222;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+        border-left: none;
+        border-top: 4px solid #222;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    }
 }

@@ -1,24 +1,26 @@
 import { Component } from '@angular/core';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @Component({
   selector: 'contador-component',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './contador.html',
   styleUrl: './contador.css'
 })
 export class ContadorComponent {
 
-  numero:number = 0;
+  numero: number = 0;
 
-  incrementar(){
+  incrementar() {
     this.numero++;
   }
 
-  decrementar(){
+  decrementar() {
     this.numero--;
   }
 
-  reset(){
+  reset() {
     this.numero = 0;
   }
 

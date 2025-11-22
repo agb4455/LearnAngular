@@ -1,34 +1,26 @@
-<div class = "formContainer">
-    <form [formGroup] = "FormData" (ngSubmit)="onSubmit()" class ="formulario"> 
+<div class="formContainer">
+    <form [formGroup]="FormData" (ngSubmit)="onSubmit()" class="formulario">
         <mat-form-field apparence="outline">
-            <mat-label>Asunto de la tarea</mat-label>
-            <input
-                matInput
-                formControlName="name"
-                required
-
-            />
+            <mat-label>{{ 'KANBAN.DIALOG.TITLE' | translate }}</mat-label>
+            <input matInput formControlName="name" required />
         </mat-form-field>
         <mat-form-field apparence="outline">
-            <mat-label>Descripcion de la tarea</mat-label>
-            <input
-                matInput
-                formControlName="description"
-                required
-            />
+            <mat-label>{{ 'KANBAN.DIALOG.DESCRIPTION' | translate }}</mat-label>
+            <input matInput formControlName="description" required />
         </mat-form-field>
         <mat-form-field apparence="outline">
-            <mat-label>Asunto de la tarea</mat-label>
+            <mat-label>{{ 'KANBAN.DIALOG.STATE' | translate }}</mat-label>
             <mat-select formControlName="state" required>
                 @for (state of states; track state) {
-                    <mat-option [value]="state">{{ state | titlecase }}</mat-option>
+                <mat-option [value]="state">{{ 'KANBAN.' + state | translate | titlecase }}</mat-option>
                 }
             </mat-select>
         </mat-form-field>
-        <div class = "botonesForm">
-            <button matButton="outlined" type="submit">Enviar</button>
-            <button matButton="outlined" type="button"(click)="this.dialogRef.close()">Cancelar</button>
+        <div class="botonesForm">
+            <button matButton="outlined" type="submit">{{ 'KANBAN.DIALOG.SEND' | translate }}</button>
+            <button matButton="outlined" type="button" (click)="this.dialogRef.close()">{{ 'KANBAN.DIALOG.CANCEL' |
+                translate }}</button>
         </div>
-        
+
     </form>
 </div>

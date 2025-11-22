@@ -4,9 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { ChatService } from '../../services/chat';
 import { CommonModule } from '@angular/common';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-chat',
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule, TranslateModule],
   templateUrl: './chat.html',
   styleUrl: './chat.scss',
   standalone: true,
@@ -17,25 +19,25 @@ export class Chat {
   loading = false;
 
 
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService) { }
 
   async sendMessage() {
-     if (!this.inputText.trim()) return;
+    if (!this.inputText.trim()) return;
 
-      this.messages.push({ user: 'User', text: this.inputText });
-      this.loading = true;
+    this.messages.push({ user: 'User', text: this.inputText });
+    this.loading = true;
 
-      this.chatService.sendMessage(this.inputText).subscribe({
-        next: (res) => {
-          this.messages.push({ user: 'IA', text: res.text });
-          this.loading = false;
-        },
-        error: () => {
-          this.messages.push({ user: 'IA', text: 'Error al conectar con la IA' });
-          this.loading = false;
-        }
-      });
+    this.chatService.sendMessage(this.inputText).subscribe({
+      next: (res) => {
+        this.messages.push({ user: 'IA', text: res.text });
+        this.loading = false;
+      },
+      error: () => {
+        this.messages.push({ user: 'IA', text: 'Error al conectar con la IA' });
+        this.loading = false;
+      }
+    });
 
-      this.inputText = '';
-    }
+    this.inputText = '';
+  }
 }

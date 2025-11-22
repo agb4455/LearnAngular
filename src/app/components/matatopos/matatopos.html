@@ -1,22 +1,13 @@
-<div class = "col">
-    <p>Has matados: {{toposMuertos}} topos</p>
-    <div *ngFor="let row of topos; let i = index" class = "row">
+<div class="col">
+    <p>{{ 'MATATOPOS.KILLED' | translate:{count: toposMuertos} }}</p>
+    <div *ngFor="let row of topos; let i = index" class="row">
         <div *ngFor="let col of row; let j = index">
-            <button
-                *ngIf="activo === i*3 + j; else noActivo"
-                (click)="randomizar(i*3 + j)"
-                class="boton verde"
-            >
-                <img
-                    src="topo.png"
-                    alt="topo"
-                    class="topo"
-                    [ngClass]="{'topo-enter': !desapareciendo,
+            <button *ngIf="activo === i*3 + j; else noActivo" (click)="randomizar(i*3 + j)" class="boton verde">
+                <img src="topo.png" alt="topo" class="topo" [ngClass]="{'topo-enter': !desapareciendo,
                     'topo-enter-active': !desapareciendo && apareciendo,
                     'topo-leave': desapareciendo,
                     'topo-leave-active': desapareciendo
-                    }"
-                />
+                    }" />
             </button>
             <ng-template #noActivo>
                 <button (click)="randomizar(i*3 + j)" class="boton"></button>

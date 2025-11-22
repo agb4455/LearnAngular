@@ -1,42 +1,42 @@
 <div class="container">
     <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form">
         <div class="labelDiv">
-            <label for="nombre">Nombre:</label>
+            <label for="nombre">{{ 'FORM.NAME' | translate }}</label>
             <input id="nombre" formControlName="nombre">
             @if(formulario.controls['nombre'].touched){
             <small class="error_MSG">
                 @if(formulario.controls['nombre'].hasError('required')){
-                    el nombre es obligatorio
+                {{ 'FORM.ERRORS.REQUIRED_NAME' | translate }}
                 }
                 @if(formulario.controls['nombre'].hasError('minlength')){
-                    minimo 3 letras
+                {{ 'FORM.ERRORS.MIN_LENGTH' | translate }}
                 }
                 @if(formulario.controls['nombre'].hasError('maxlength')){
-                    maximo 10 letras
+                {{ 'FORM.ERRORS.MAX_LENGTH' | translate }}
                 }
             </small>
-        }
-        </div>
-        
-        <div class="labelDiv">
-            <label for="email">Email:</label>
-            <input id="email" formControlName="email">
-            @if(formulario.controls['email'].touched){
-                <small class="error_MSG">
-                    @if(formulario.controls['email'].hasError('required')){
-                        el email es obligatorio
-                    }
-                    @if(formulario.controls['nombre'].hasError('email')){
-                        El texto introducido no es un email
-                    }
-                </small>
             }
         </div>
-        
+
+        <div class="labelDiv">
+            <label for="email">{{ 'FORM.EMAIL' | translate }}</label>
+            <input id="email" formControlName="email">
+            @if(formulario.controls['email'].touched){
+            <small class="error_MSG">
+                @if(formulario.controls['email'].hasError('required')){
+                {{ 'FORM.ERRORS.REQUIRED_EMAIL' | translate }}
+                }
+                @if(formulario.controls['nombre'].hasError('email')){
+                {{ 'FORM.ERRORS.INVALID_EMAIL' | translate }}
+                }
+            </small>
+            }
+        </div>
+
         <div class="btnsub">
-            <button type="submit">Enviar</button>
-            <button type="button" (click) = "reset()">Reset</button>
+            <button type="submit">{{ 'FORM.SEND' | translate }}</button>
+            <button type="button" (click)="reset()">{{ 'FORM.RESET' | translate }}</button>
         </div>
 
     </form>
-</div> 
+</div>

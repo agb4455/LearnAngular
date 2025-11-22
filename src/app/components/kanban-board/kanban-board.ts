@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, HostListener, inject} from '@angular/core';
-import { Task, TastState} from '../../model/Task';
+import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angular/core';
+import { Task, TastState } from '../../model/Task';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { CdkDragDrop, DragDropModule, moveItemInArray} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -13,6 +13,7 @@ import { CdkAccordionItem } from "@angular/cdk/accordion";
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -30,20 +31,21 @@ import { Inject } from '@angular/core';
     MatButtonModule,
     MatIcon,
     CdkAccordionItem,
-    MatDialogModule
-],
+    MatDialogModule,
+    TranslateModule
+  ],
   templateUrl: './kanban-board.html',
   styleUrl: './kanban-board.scss'
 })
 export class KanbanBoard {
-  TaskList : Task [] = [];
+  TaskList: Task[] = [];
 
   isEntering: boolean = false;
- states = Object.values(TastState);
-  
+  states = Object.values(TastState);
+
   listIds = Object.values(TastState).map(s => s.toString());
 
-  
+
 
   // Objeto para que CDK tenga referencias estables
   tasksByState: Record<TastState, Task[]> = {
@@ -51,7 +53,7 @@ export class KanbanBoard {
     [TastState.IN_PROGRESS]: [],
     [TastState.DONE]: []
   };
-  
+
 
   constructor() {
     const saved = localStorage.getItem('kanban-tasks');
@@ -77,7 +79,7 @@ export class KanbanBoard {
 
   drop(event: CdkDragDrop<Task[]>, targetState: TastState) {
     const task = event.previousContainer.data[event.previousIndex];
-    
+
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -88,20 +90,20 @@ export class KanbanBoard {
     this.saveTasks();
   }
 
-  
+
 
   @HostListener('window:beforeunload')
   ngOnDestroy() {
     this.saveTasks();
   }
 
-  
 
-  deletedElementById(id:number){
+
+  deletedElementById(id: number) {
     const index = this.TaskList.findIndex((task: any) => task.id === id);
 
     if (index !== -1) {
-        this.TaskList.splice(index, 1);
+      this.TaskList.splice(index, 1);
     }
 
     this.updateTasksByState();
@@ -113,14 +115,14 @@ export class KanbanBoard {
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
-      data: { 
-        TaskList: this.TaskList  
+      data: {
+        TaskList: this.TaskList
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.TaskList.push(result); 
+        this.TaskList.push(result);
         this.updateTasksByState();
         this.saveTasks();
       }
@@ -143,7 +145,9 @@ export class KanbanBoard {
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatDialogModule
+    MatButtonModule,
+    MatDialogModule,
+    TranslateModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './kanban-board.scss'
@@ -152,20 +156,20 @@ export class DialogContentExampleDialog {
 
   constructor(
     public dialogRef: MatDialogRef<DialogContentExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: { TaskList: Task[] } 
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: { TaskList: Task[] }
+  ) { }
 
 
   states = Object.values(TastState);
 
   FormData = new FormGroup({
-    name : new FormControl <String>('',[Validators.required]),
-    description : new FormControl <String>('',[Validators.required]),
-    state: new FormControl <TastState | null>(null,[Validators.required])
+    name: new FormControl<String>('', [Validators.required]),
+    description: new FormControl<String>('', [Validators.required]),
+    state: new FormControl<TastState | null>(null, [Validators.required])
   })
 
-  onSubmit(){
-    if(!this.FormData.invalid){
+  onSubmit() {
+    if (!this.FormData.invalid) {
       const newTask = new Task(
         this.data.TaskList.length + 1 as number,
         this.FormData.value.name as string,
@@ -174,7 +178,7 @@ export class DialogContentExampleDialog {
       );
 
       this.dialogRef.close(newTask);
-    }else{
+    } else {
       console.log("no es viable la insercion" + this.FormData)
     }
   }

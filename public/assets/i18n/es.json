@@ -1,0 +1,98 @@
+{
+    "NAV": {
+        "HOME": "Inicio",
+        "MATATOPOS": "Matatopos",
+        "CONTADOR": "Contador",
+        "SEMAFORO": "Semáforo automático",
+        "CHARACTERS": "Personajes",
+        "EYE_CANDY": "EyeCandy",
+        "FORM_TEST": "Formulario Prueba",
+        "HALLOWEEN": "Halloween",
+        "KANBAN": "Kanban",
+        "GRAFIC": "Gráfico",
+        "CHAT": "Chat",
+        "RUN": "Carrera",
+        "COOKIE_CLICKER": "Cookie Clicker",
+        "USER": "Usuario"
+    },
+    "CLICKER": {
+        "CODES": "códigos",
+        "PER_SECOND": "por segundo",
+        "ACHIEVEMENTS": "Logros",
+        "STORE": "Tienda",
+        "PRODUCTION_TAB": "Producción",
+        "CLICK_TAB": "Por Click"
+    },
+    "UPGRADES": {
+        "VARIABLES": "Variables",
+        "FUNCTIONS": "Funciones",
+        "CLASSES": "Clases",
+        "FRAMEWORKS": "Frameworks",
+        "APIS": "APIs",
+        "COMPILERS": "Compiladores"
+    },
+    "LANG": {
+        "SPANISH": "Español",
+        "ENGLISH": "English",
+        "SELECT": "Idioma"
+    },
+    "MAIN": {
+        "TITLE": "Bienvenido al desarrollo de introducción a Angular",
+        "SUBTITLE": "Seleccione una opción de la barra de inicio para comenzar"
+    },
+    "MATATOPOS": {
+        "KILLED": "Has matado: {{count}} topos"
+    },
+    "CONTADOR": {
+        "TITLE": "Bienvenido a la aplicación de introducción de Angular",
+        "RESET": "Reiniciar"
+    },
+    "SEMAFORO": {
+        "RESTART": "Reiniciar"
+    },
+    "CHARACTERS": {
+        "DESCRIPTION": "Descripción"
+    },
+    "HALLOWEEN": {
+        "WELCOME": "🎃 ¡Bienvenido/a, {{name}}! Tu entrada para la fiesta del castillo ha sido registrada con éxito.",
+        "NEW_REGISTER": "Nuevo Registro",
+        "TABLE": {
+            "NAME": "Nombre",
+            "MONSTER": "Monstruo"
+        }
+    },
+    "FORM": {
+        "NAME": "Nombre:",
+        "EMAIL": "Email:",
+        "ERRORS": {
+            "REQUIRED_NAME": "El nombre es obligatorio",
+            "MIN_LENGTH": "Mínimo 3 letras",
+            "MAX_LENGTH": "Máximo 10 letras",
+            "REQUIRED_EMAIL": "El email es obligatorio",
+            "INVALID_EMAIL": "El texto introducido no es un email"
+        },
+        "SEND": "Enviar",
+        "RESET": "Reiniciar"
+    },
+    "CHAT": {
+        "WRITING": "IA escribiendo...",
+        "PLACEHOLDER": "Escribe algo...",
+        "SEND": "Enviar"
+    },
+    "RUN": {
+        "WORKS": "¡Run funciona!"
+    },
+    "KANBAN": {
+        "ADD_TASK": "Insertar nueva tarea",
+        "TODO": "Por hacer",
+        "IN_PROGRESS": "En progreso",
+        "DONE": "Hecho",
+        "DIALOG": {
+            "TITLE": "Asunto de la tarea",
+            "DESCRIPTION": "Descripción de la tarea",
+            "STATE": "Estado de la tarea",
+            "SEND": "Enviar",
+            "CANCEL": "Cancelar"
+        }
+    }
+}

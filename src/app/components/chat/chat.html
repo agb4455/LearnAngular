@@ -1,17 +1,17 @@
 <div class="chat-container">
 
-  <div class = mesajes-container>
-  @for(msg of messages;track msg){
+  <div class=mesajes-container>
+    @for(msg of messages;track msg){
     <div class="{{msg.user}}">
       <b>{{msg.user}}:</b>{{msg.text}}
     </div>
-  }
+    }
   </div>
 
   @if(loading){
-    <div><i>IA escribiendo...</i></div>
+  <div><i>{{ 'CHAT.WRITING' | translate }}</i></div>
   }
 
-  <input [(ngModel)]="inputText" (keyup.enter)="sendMessage()" placeholder="Escribe algo..." />
-  <button (click)="sendMessage()">Enviar</button>
+  <input [(ngModel)]="inputText" (keyup.enter)="sendMessage()" [placeholder]="'CHAT.PLACEHOLDER' | translate" />
+  <button (click)="sendMessage()">{{ 'CHAT.SEND' | translate }}</button>
 </div>

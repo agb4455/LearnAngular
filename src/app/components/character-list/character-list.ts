@@ -7,14 +7,16 @@ import { MatExpansionPanel, MatExpansionPanelHeader } from '@angular/material/ex
 import { CdkAccordion, CdkAccordionItem } from "@angular/cdk/accordion";
 
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-character-list',
-  imports: [MatCardModule, NgFor, MatIcon, CdkAccordion, CdkAccordionItem],
+  imports: [MatCardModule, NgFor, MatIcon, CdkAccordion, CdkAccordionItem, TranslateModule],
   templateUrl: './character-list.html',
   styleUrl: './character-list.css'
 })
 export class CharacterList {
-  
-  @Input() character:Character = {} as Character;
+
+  @Input() character: Character = {} as Character;
 
 }

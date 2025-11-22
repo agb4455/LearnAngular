@@ -3,47 +3,47 @@
     <app-contador-time-hallowen [targetDate]="halloweenDate" [passedDate]="pasedDate"></app-contador-time-hallowen>
   </div>
 
-  <div class = "item" [ngClass]="{'content': guests.length > 0}">
-    <div class = "form">
+  <div class="item" [ngClass]="{'content': guests.length > 0}">
+    <div class="form">
       @if (showRegister) {
-        <app-halloween-reguister-form (sub)="addGuest($event)"></app-halloween-reguister-form>
+      <app-halloween-reguister-form (sub)="addGuest($event)"></app-halloween-reguister-form>
       } @else {
-        <div class="item">
-          <mat-card>
-            <p class="registerString">
-              🎃 ¡Bienvenido/a, {{ guests.at(-1)?.name }}! Tu entrada para la fiesta del castillo ha sido registrada con éxito.
-            </p>
-            <button mat-button (click)="showRegister = true">Nuevo Registro</button>
-          </mat-card>
-        </div>
+      <div class="item">
+        <mat-card>
+          <p class="registerString">
+            {{ 'HALLOWEEN.WELCOME' | translate:{name: guests.at(-1)?.name} }}
+          </p>
+          <button mat-button (click)="showRegister = true">{{ 'HALLOWEEN.NEW_REGISTER' | translate }}</button>
+        </mat-card>
+      </div>
       }
     </div>
 
     @if (guests.length > 0) {
-      <div class="item">
-        <mat-card>
-          <table mat-table [dataSource]="guests" class="mat-elevation-z8">
-            <!-- Fila de encabezado - datos -->
-            <ng-container matColumnDef="nombre">
-                <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
+    <div class="item">
+      <mat-card>
+        <table mat-table [dataSource]="guests" class="mat-elevation-z8">
+          <!-- Fila de encabezado - datos -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> {{ 'HALLOWEEN.TABLE.NAME' | translate }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
 
-            <!-- Fila de encabezado - datos -->
-            <ng-container matColumnDef="mounstruo">
-                <th mat-header-cell *matHeaderCellDef> Mounstruo </th>
-                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-            </ng-container>
+          <!-- Fila de encabezado - datos -->
+          <ng-container matColumnDef="mounstruo">
+            <th mat-header-cell *matHeaderCellDef> {{ 'HALLOWEEN.TABLE.MONSTER' | translate }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+          </ng-container>
 
 
-              <!-- Fila de encabezados -->
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <!-- Fila de encabezados -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-            <!-- Fila de datos -->
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-        </mat-card>
-      </div>
+          <!-- Fila de datos -->
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-card>
+    </div>
     }
   </div>
 </div>
