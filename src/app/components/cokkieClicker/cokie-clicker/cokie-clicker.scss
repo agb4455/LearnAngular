@@ -175,3 +175,25 @@
         opacity: 0;
     }
 }
+
+/* Responsive adjustments for mobile */
+// Tablet (debajo de 1024px)
+@media (max-width: 1024px) {
+    .code-icon {
+        font-size: 10rem !important;
+    }
+}
+
+// Móvil (debajo de 768px)
+@media (max-width: 768px) {
+    .code-icon {
+        font-size: 8rem !important;
+    }
+}
+
+// Móvil pequeño (debajo de 480px)
+@media (max-width: 480px) {
+    .code-icon {
+        font-size: 6rem !important;
+    }
+}

@@ -10,5 +10,25 @@ import { AchievementsComponent } from "../../components/cokkieClicker/achievemen
   styleUrl: './cokkie-clicker.scss',
 })
 export class CokkieClicker {
+  achievementsOpen = false;
+  storeOpen = false;
 
+  toggleAchievements() {
+    this.achievementsOpen = !this.achievementsOpen;
+    if (this.achievementsOpen) {
+      this.storeOpen = false;
+    }
+  }
+
+  toggleStore() {
+    this.storeOpen = !this.storeOpen;
+    if (this.storeOpen) {
+      this.achievementsOpen = false;
+    }
+  }
+
+  closeAll() {
+    this.achievementsOpen = false;
+    this.storeOpen = false;
+  }
 }

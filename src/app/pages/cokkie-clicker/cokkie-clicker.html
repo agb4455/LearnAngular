@@ -1,5 +1,36 @@
 <div class="cokie-clicker">
-    <app-achievements></app-achievements>
-    <app-cokie-clicker></app-cokie-clicker>
-    <app-store></app-store>
+    <!-- Overlay para cerrar paneles en móvil -->
+    <div class="mobile-overlay" [class.active]="achievementsOpen || storeOpen" (click)="closeAll()"></div>
+
+    <!-- Panel de Achievements -->
+    <div class="side-panel left" [class.open]="achievementsOpen">
+        <app-achievements></app-achievements>
+    </div>
+
+    <!-- Área central con botones de toggle -->
+    <div class="main-content">
+        <app-cokie-clicker></app-cokie-clicker>
+
+        <!-- Botones flotantes para móvil -->
+        <button class="mobile-toggle left" (click)="toggleAchievements()" [class.hidden]="achievementsOpen">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+            </svg>
+            <span>Logros</span>
+        </button>
+
+        <button class="mobile-toggle right" (click)="toggleStore()" [class.hidden]="storeOpen">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 3h18v3H3V3zm0 4h18v14H3V7z" />
+                <path d="M8 11h8M8 15h5" />
+            </svg>
+            <span>Tienda</span>
+        </button>
+    </div>
+
+    <!-- Panel de Store -->
+    <div class="side-panel right" [class.open]="storeOpen">
+        <app-store></app-store>
+    </div>
 </div>
