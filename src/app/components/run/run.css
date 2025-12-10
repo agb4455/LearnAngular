@@ -1,0 +1,61 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.race-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to right, #87CEEB 0%, #4A90E2 50%, #87CEEB 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+
+.chibi {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-size: 1200px 100px;
+    animation: run 0.8s steps(12) infinite;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
+    transition: transform 0.05s linear;
+}
+
+
+.chibi-1 {
+    background-image: url('/chivis/anubis.png');
+}
+
+.chibi-2 {
+    background-image: url('/chivis/old-guy.png');
+}
+
+.chibi-3 {
+    background-image: url('/chivis/hell-knight.png');
+}
+
+.chibi-4 {
+    background-image: url('/chivis/pirate.png');
+}
+
+.chibi-5 {
+    background-image: url('/chivis/succubus.png');
+}
+
+
+@keyframes run{
+    0%{
+        background-position-x: 0;
+    }
+    100%{
+        background-position-x: 1200px;
+    }
+}

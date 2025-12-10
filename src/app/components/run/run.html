@@ -1,1 +1,7 @@
-<p>{{ 'RUN.WORKS' | translate }}</p>
+<div class="race-container">
+    @for(chibi of chibis; track chibi.id){
+        <div [class]="'chibi chibi-' + (chibi.id + 1)"
+             [ngStyle]="getTransform(chibi)">
+        </div>
+    }
+</div>
